@@ -2,19 +2,19 @@
 {
   "date": "2026.01.01",
   "tag": "重要",
-  "title": "新年のご挨拶",
-  "url": "news-20260101.html"
+  "title": "海外居住者の不動産仲介、消費税の免税廃止",
+  "url": "https://www.nikkei.com/article/DGXZQOUA226PW0S5A221C2000000/"
+},
+   {
+  "date": "2026.12.16",
+  "tag": "重要",
+  "title": "不動産登記時の国籍記載、2026年度に義務化",
+  "url": "https://www.nikkei.com/article/DGXZQOUA160O90W5A211C2000000/"
 },
   {
-    "date": "2025.12.24",
-    "tag": "お知らせ",
-    "title": "年末年始の営業に関するお知らせ",
-    "url": "news-20251224.html"
-  },
-  {
-    "date": "2025.12.16",
-    "tag": "お知らせ",
-    "title": "ホームページをリニューアルいたしました。",
-    "url": "news-20251216.html"
-  }
+  "date": "2026.10.16",
+  "tag": "重要",
+  "title": "経営管理ビザ、投資額3000万円へ引き上げ",
+  "url": "https://www.moj.go.jp/isa/applications/resources/10_00237.html"
+},
 ]
