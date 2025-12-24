@@ -145,12 +145,36 @@
 
 <div class="section" id="news">
     <h2 class="section-title">NEWS</h2>
-    <div class="news-list">
-        <div class="news-item">
-            <div class="news-date">2025.12.16</div>
-            <div class="news-title"><span class="news-tag">お知らせ</span>ホームページをリニューアルいたしました。</div>
-        </div>
+ <div class="section" id="news">
+    <h2 class="section-title">NEWS</h2>
+    <div id="home-news-container" class="news-list">加载中...</div>
+    
+    <div style="text-align: center;">
+        <a href="news.html" class="view-more-btn">ニュース一覧を見る ＞</a>
     </div>
+</div>
+
+<script>
+    // 自动读取新闻并显示在主页
+    fetch('news-data.json')
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById('home-news-container');
+            container.innerHTML = ''; // 清空加载文字
+            // 只取最新的前 3 条
+            data.slice(0, 3).forEach(item => {
+                const html = `
+                    <div class="news-item">
+                        <div class="news-date">${item.date}</div>
+                        <div class="news-title">
+                            <span class="news-tag">${item.tag}</span>
+                            ${item.title}
+                        </div>
+                    </div>`;
+                container.innerHTML += html;
+            });
+        });
+</script>
     <div style="text-align: center;">
         <a href="news.html" class="view-more-btn">ニュース一覧を見る ＞</a>
     </div>
