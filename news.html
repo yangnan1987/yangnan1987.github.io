@@ -112,16 +112,32 @@
 <div class="container">
     <h1>NEWS 一覧</h1>
     
-    <div class="news-full-list">
-        
-        <div class="news-card">
-            <div class="news-info">
-                <span class="news-date">2025.12.16</span>
-                <span class="news-tag">お知らせ</span>
-                <div class="news-title">ホームページをリニューアルいたしました。</div>
-            </div>
-            <a href="这里填入链接地址" class="news-link-btn">詳細を見る</a>
-        </div>
+<div class="container">
+    <h1>NEWS 一覧</h1>
+    <div id="full-news-list" class="news-full-list">加载中...</div>
+</div>
+
+<script>
+    fetch('news-data.json')
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById('full-news-list');
+            container.innerHTML = ''; 
+            // 显示全部新闻
+            data.forEach(item => {
+                const html = `
+                    <div class="news-card">
+                        <div class="news-info">
+                            <span class="news-date">${item.date}</span>
+                            <span class="news-tag">${item.tag}</span>
+                            <div class="news-title">${item.title}</div>
+                        </div>
+                        <a href="${item.url}" class="news-link-btn">詳細を見る</a>
+                    </div>`;
+                container.innerHTML += html;
+            });
+        });
+</script>
         </div>
 
     <div class="back-home">
