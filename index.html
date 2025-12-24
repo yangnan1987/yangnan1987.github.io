@@ -5,71 +5,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEW LIFE DEVELOPMENT CO., LTD.</title>
     <style>
-        /* 基础样式 */
-        body, html { margin: 0; padding: 0; font-family: 'Helvetica Neue', Arial, sans-serif; height: 100%; }
+        body, html { margin: 0; padding: 0; font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif; color: #333; line-height: 1.6; }
         
-        /* 顶部深蓝条 */
+        /* 导航栏 */
         header {
             background-color: #1a2a3a;
             color: white;
             padding: 20px 50px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .company-name-ja { font-size: 1.2rem; margin-bottom: 5px; font-weight: 300; }
-        .company-name-en { font-size: 1rem; letter-spacing: 1px; }
-
-        /* 背景大图区域 */
+        .logo-box { text-align: left; }
+        .company-name-ja { font-size: 1.1rem; font-weight: bold; }
+        .company-name-en { font-size: 0.8rem; letter-spacing: 1px; opacity: 0.8; }
+        
+        /* 首页大图区域 */
         .hero {
             position: relative;
-            height: 80vh; /* 高度占屏幕的80% */
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('hero-bg.jpg');
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('hero-bg.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
             align-items: center;
-            justify-content: flex-end; /* 文字靠右 */
-            padding-right: 10%;
-        }
-
-        /* 主标题文字 */
-        .hero-text {
+            justify-content: center;
             color: white;
-            text-align: right;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            text-align: center;
         }
-        .hero-text h1 {
-            font-size: 3.5rem;
-            margin: 0;
-            line-height: 1.2;
-            font-weight: bold;
-        }
-        .hero-text p {
-            font-size: 1.1rem;
-            margin-top: 20px;
-            font-weight: 300;
-        }
+        .hero-content h1 { font-size: 4rem; margin: 0; font-weight: bold; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        .hero-content p { font-size: 1.5rem; margin-top: 20px; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
 
-        /* 响应式调整（手机端） */
+        /* 内容板块 */
+        .section { padding: 80px 10%; text-align: center; }
+        .section h2 { font-size: 2.5rem; color: #1a2a3a; margin-bottom: 40px; border-bottom: 2px solid #1a2a3a; display: inline-block; padding-bottom: 10px; }
+        .content-grid { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; }
+        .card { background: #f4f4f4; padding: 30px; width: 30%; min-width: 280px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .card h3 { color: #1a2a3a; }
+
+        /* 页脚 */
+        footer { background: #1a2a3a; color: white; padding: 40px 10%; text-align: center; font-size: 0.9rem; }
+
         @media (max-width: 768px) {
-            header { padding: 15px 20px; }
-            .hero { justify-content: center; padding-right: 0; }
-            .hero-text { text-align: center; }
-            .hero-text h1 { font-size: 2rem; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .card { width: 100%; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="company-name-ja">ニューライフ開発株式会社</div>
-    <div class="company-name-en">NEW LIFE DEVELOPMENT CO., LTD.</div>
+    <div class="logo-box">
+        <div class="company-name-ja">ニューライフ開発株式会社</div>
+        <div class="company-name-en">NEW LIFE DEVELOPMENT CO., LTD.</div>
+    </div>
 </header>
 
 <div class="hero">
-    <div class="hero-text">
+    <div class="hero-content">
         <h1>境界なき未来へ<br>真の価値を創造する</h1>
-        <p>国境を越えた「自由」と「成功」を形にする、共に豊かな未来を築く</p>
+        <p>国境を越えた「自由」と「成功」を形にする</p>
     </div>
 </div>
+
+<div class="section" id="about">
+    <h2>ABOUT US</h2>
+    <p>我们致力于为客户提供最优质的不动产开发与咨询服务。立足于日本大阪，面向全球视野。</p>
+</div>
+
+<div class="section" id="services" style="background-color: white;">
+    <h2>OUR SERVICES</h2>
+    <div class="content-grid">
+        <div class="card">
+            <h3>不动产开发</h3>
+            <p>为您打造高价值的居住与商业空间。</p>
+        </div>
+        <div class="card">
+            <h3>资产配置</h3>
+            <p>专业的市场分析，助您实现财富稳健增长。</p>
+        </div>
+        <div class="card">
+            <h3>咨询服务</h3>
+            <p>全方位的法律与税务咨询支持。</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>© 2025 NEW LIFE DEVELOPMENT CO., LTD. All Rights Reserved.</p>
+    <p>大阪府大阪市阿倍野区阿倍野筋1-1-43</p>
+</footer>
 
 </body>
 </html>
