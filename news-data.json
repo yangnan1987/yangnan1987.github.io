@@ -1,20 +1,20 @@
 [
-{
-  "date": "2026.12.24",
-  "tag": "重要",
-  "title": "海外居住者の不動産仲介、消費税の免税廃止",
-  "url": "https://www.nikkei.com/article/DGXZQOUA226PW0S5A221C2000000/"
-},
-   {
-  "date": "2026.12.16",
-  "tag": "重要",
-  "title": "不動産登記時の国籍記載、2026年度に義務化",
-  "url": "https://www.nikkei.com/article/DGXZQOUA160O90W5A211C2000000/"
-},
   {
-  "date": "2026.10.16",
-  "tag": "重要",
-  "title": "経営管理ビザ、投資額3000万円へ引き上げ",
-  "url": "https://www.moj.go.jp/isa/applications/resources/10_00237.html"
-},
+    "date": "2025.12.24",
+    "tag": "重要",
+    "title": "海外居住者の不動産仲介、消費税の免税廃止",
+    "url": "https://www.nikkei.com/article/DGXZQOUA226PW0S5A221C2000000/"
+  },
+  {
+    "date": "2025.12.16",
+    "tag": "重要",
+    "title": "不動産登記時の国籍記載、2026年度に義務化",
+    "url": "https://www.nikkei.com/article/DGXZQOUA162980W5A211C2000000/"
+  },
+  {
+    "date": "2025.10.16",
+    "tag": "重要",
+    "title": "経営管理ビザ、投資額3000万円へ引き上げ",
+    "url": "https://www.moj.go.jp/isa/applications/status/business_management.html"
+  }
 ]
