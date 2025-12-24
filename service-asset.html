@@ -6,23 +6,39 @@
     <title>資産管理コンサルティング - NEW LIFE DEVELOPMENT</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        body, html { margin: 0; padding: 0; font-family: 'Noto Sans JP', sans-serif; color: #333; line-height: 1.8; }
+        body, html { margin: 0; padding: 0; font-family: 'Noto Sans JP', sans-serif; color: #333; line-height: 1.8; scroll-behavior: smooth; }
         a { text-decoration: none; color: inherit; }
-        
-        /* 继承主页导航栏样式 */
+        ul { list-style: none; padding: 0; margin: 0; }
+
+        /* 统一导航栏 */
         header {
             background-color: #1a2a3a;
             color: white;
             padding: 0 5%;
             height: 80px;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         .logo-box { text-align: left; line-height: 1.2; }
         .company-name-ja { font-size: 1.2rem; font-weight: 700; }
+        .company-name-en { font-size: 0.75rem; letter-spacing: 1px; opacity: 0.8; }
         
-        /* 子页面 Hero 区域 */
+        nav > ul { display: flex; gap: 0; height: 80px; align-items: center; }
+        nav > ul > li { position: relative; height: 100%; display: flex; align-items: center; }
+        nav > ul > li > a { font-size: 0.95rem; color: #ddd; padding: 0 20px; height: 100%; display: flex; align-items: center; transition: 0.3s; }
+        nav > ul > li:hover > a { color: white; background-color: rgba(255,255,255,0.05); }
+
+        .dropdown { display: none; position: absolute; top: 100%; left: 0; background-color: #1a2a3a; min-width: 260px; box-shadow: 0 8px 16px rgba(0,0,0,0.3); z-index: 3000; }
+        .dropdown li a { display: block; padding: 15px 20px; color: #ccc; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; }
+        .dropdown li a:hover { background-color: #2c3e50; color: white; padding-left: 25px; }
+        nav > ul > li:hover .dropdown { display: block; }
+
+        /* 子页面 Hero */
         .sub-hero {
             height: 400px;
             background: linear-gradient(rgba(26, 42, 58, 0.7), rgba(26, 42, 58, 0.7)), url('service-asset-bg.jpg');
@@ -34,24 +50,25 @@
             color: white;
             text-align: center;
         }
-        .sub-hero h1 { font-size: 2.5rem; font-weight: 700; letter-spacing: 2px; }
+        .sub-hero h1 { font-size: 2.5rem; font-weight: 700; letter-spacing: 2px; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
 
         /* 内容区域 */
         .container { max-width: 1000px; margin: 0 auto; padding: 80px 5%; }
         .lead-text { font-size: 1.2rem; border-left: 4px solid #1a2a3a; padding-left: 20px; margin-bottom: 60px; text-align: justify; }
-
-        /* 列表板块 */
         .service-detail-item { margin-bottom: 50px; background: #f9f9f9; padding: 40px; border-radius: 8px; }
         .service-detail-item h2 { color: #1a2a3a; font-size: 1.5rem; margin-top: 0; display: flex; align-items: center; }
         .service-detail-item h2::before { content: "●"; margin-right: 15px; color: #1a2a3a; }
-        .service-detail-item p { margin-bottom: 0; font-size: 1.05rem; }
 
-        /* 返回按钮 */
         .back-home { text-align: center; margin-top: 50px; }
         .btn { display: inline-block; padding: 15px 40px; background: #1a2a3a; color: white; border-radius: 30px; transition: 0.3s; }
         .btn:hover { background: #2c3e50; transform: translateY(-3px); }
 
-        footer { background: #1a2a3a; color: white; padding: 40px 10%; text-align: center; font-size: 0.9rem; margin-top: 80px; }
+        footer { background: #1a2a3a; color: white; padding: 40px 10%; text-align: center; font-size: 0.9rem; }
+        
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .sub-hero h1 { font-size: 1.8rem; }
+        }
     </style>
 </head>
 <body>
@@ -60,9 +77,26 @@
     <div class="logo-box">
         <a href="index.html">
             <div class="company-name-ja">ニューライフ開発株式会社</div>
-            <div class="company-name-en" style="font-size: 0.7rem; opacity: 0.8;">NEW LIFE DEVELOPMENT CO., LTD.</div>
+            <div class="company-name-en">NEW LIFE DEVELOPMENT CO., LTD.</div>
         </a>
     </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">ホーム</a></li>
+            <li>
+                <a href="index.html#services">事業内容 ▾</a>
+                <ul class="dropdown">
+                    <li><a href="service-asset.html">資産管理コンサルティング</a></li>
+                    <li><a href="service-ma.html">ビジネスマッチング（M＆A）</a></li>
+                    <li><a href="service-beauty.html">医療美容サポート</a></li>
+                    <li><a href="service-trade.html">貿易支援事業</a></li>
+                    <li><a href="service-welfare.html">福祉関係事業</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html#news">NEWS</a></li>
+            <li><a href="index.html#contact">お問い合わせ</a></li>
+        </ul>
+    </nav>
 </header>
 
 <div class="sub-hero">
@@ -71,12 +105,12 @@
 
 <div class="container">
     <p class="lead-text">
-        私たちは、日本での生活基盤の構築と、盤石な資産形成を両立させるプロフェッショナル集団です。 ビザ、不動产、税务、教育。各分野の専門家が連携し、お客様一人ひとりに最適な日本でのグランドデザインをワンストップでご提案します。
+        私たちは、日本での生活基盤の構築と、盤石な資産形成を両立させるプロフェッショナル集団です。 ビザ、不動産、税務、教育。各分野の専門家が連携し、お客様一人ひとりに最適な日本でのグランドデザインをワンストップでご提案します。
     </p>
 
     <div class="service-detail-item">
         <h2>日本拠点構築支援</h2>
-        <p>在留資格（ビザ）の戦略的取得から、円滑な生活基盤の立ち上げをサポートします。</p>
+        <p>在留資格（ビザ）の戦略的取得から、円滑な生活基盤の立ち上げをサポートサポートします。</p>
     </div>
 
     <div class="service-detail-item">
@@ -104,9 +138,7 @@
     </div>
 </div>
 
-<footer>
-    &copy; 2025 NEW LIFE DEVELOPMENT CO., LTD. All Rights Reserved.
-</footer>
+<footer>&copy; 2025 NEW LIFE DEVELOPMENT CO., LTD. All Rights Reserved.</footer>
 
 </body>
 </html>
