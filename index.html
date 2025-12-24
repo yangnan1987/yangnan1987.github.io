@@ -9,30 +9,69 @@
         /* 全局设置 */
         body, html { margin: 0; padding: 0; font-family: 'Noto Sans JP', 'Helvetica Neue', Arial, sans-serif; color: #333; line-height: 1.8; scroll-behavior: smooth; }
         a { text-decoration: none; color: inherit; }
-        
+        ul { list-style: none; padding: 0; margin: 0; }
+
         /* 导航栏 */
         header {
             background-color: #1a2a3a;
             color: white;
-            padding: 15px 5%;
+            padding: 0 5%;
+            height: 80px; /* 固定高度确保对齐 */
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 2000;
             display: flex;
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        .logo-box { text-align: left; }
+        .logo-box { text-align: left; line-height: 1.2; }
         .company-name-ja { font-size: 1.2rem; font-weight: 700; }
         .company-name-en { font-size: 0.75rem; letter-spacing: 1px; opacity: 0.8; }
         
-        /* 导航菜单（桌面端） */
-        nav ul { list-style: none; display: flex; gap: 20px; padding: 0; margin: 0; }
-        nav a { font-size: 0.9rem; color: #ddd; transition: color 0.3s; }
-        nav a:hover { color: white; border-bottom: 1px solid white; }
+        /* 导航菜单 */
+        nav > ul { display: flex; gap: 0; height: 80px; align-items: center; }
+        nav > ul > li { position: relative; height: 100%; display: flex; align-items: center; }
+        nav > ul > li > a { 
+            font-size: 0.95rem; 
+            color: #ddd; 
+            transition: color 0.3s; 
+            padding: 0 20px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+        nav > ul > li:hover > a { color: white; background-color: rgba(255,255,255,0.05); }
 
-        /* Hero 区域 */
+        /* 下拉菜单 (Dropdown) */
+        .dropdown {
+            display: none; /* 默认隐藏 */
+            position: absolute;
+            top: 100%; /* 在父元素正下方 */
+            left: 0;
+            background-color: #1a2a3a;
+            min-width: 260px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            z-index: 3000;
+        }
+        .dropdown li { width: 100%; }
+        .dropdown li a {
+            display: block;
+            padding: 15px 20px;
+            color: #ccc;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            height: auto;
+        }
+        .dropdown li a:hover {
+            background-color: #2c3e50;
+            color: white;
+            padding-left: 25px; /* 悬停时的小动画 */
+        }
+        /* 鼠标悬停显示下拉菜单 */
+        nav > ul > li:hover .dropdown { display: block; }
+
+        /* Hero 区域 (修复空白问题) */
         .hero {
             position: relative;
             height: 85vh;
@@ -44,16 +83,18 @@
             justify-content: center;
             color: white;
             text-align: center;
+            margin-bottom: 0; /* 强制无下边距 */
+            padding-bottom: 0;
+            overflow: hidden; /* 防止内部元素溢出导致空白 */
         }
         .hero-content h1 { font-size: 3.5rem; margin: 0; font-weight: 700; text-shadow: 0 4px 10px rgba(0,0,0,0.6); letter-spacing: 2px; }
         .hero-content p { font-size: 1.2rem; margin-top: 20px; font-weight: 300; text-shadow: 0 2px 5px rgba(0,0,0,0.6); }
 
         /* 通用板块样式 */
-        .section { padding: 80px 10%; }
+        .section { padding: 80px 10%; margin-top: 0; vertical-align: top; }
         .section-title { font-size: 2rem; color: #1a2a3a; margin-bottom: 50px; text-align: center; font-weight: 700; letter-spacing: 1px; }
         .section-title::after { content: ""; display: block; width: 60px; height: 3px; background: #1a2a3a; margin: 15px auto 0; }
         
-        /* 灰色背景块 */
         .bg-gray { background-color: #f9f9f9; }
 
         /* 社长致辞板块 */
@@ -61,7 +102,7 @@
         .message-lead { font-size: 1.2rem; font-weight: bold; color: #1a2a3a; margin-bottom: 30px; text-align: center; }
         .signature { text-align: right; margin-top: 40px; font-size: 1.2rem; font-weight: bold; }
 
-        /* 事业内容（5大板块） */
+        /* 事业内容（Grid） */
         .services-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; }
         .service-card { 
             background: white; 
@@ -87,6 +128,7 @@
 
         /* 页脚 */
         footer { background: #1a2a3a; color: white; padding: 60px 10%; text-align: center; font-size: 0.9rem; }
+        .footer-contact-title { font-size: 1.5rem; font-weight: bold; margin-bottom: 30px; color: #fff; letter-spacing: 1px; }
         .footer-info { margin-bottom: 20px; line-height: 2; }
         .copyright { opacity: 0.6; font-size: 0.8rem; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
 
@@ -94,24 +136,33 @@
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 2rem; }
             .service-card { width: 100%; }
-            nav { display: none; /* 手机端暂时隐藏菜单，后续可加汉堡按钮 */ }
+            nav { display: none; /* 手机端暂时隐藏菜单 */ }
             header { justify-content: center; }
             .news-item { flex-direction: column; }
             .news-date { margin-bottom: 5px; }
         }
     </style>
 </head>
-<body>
-
-<header>
+<body id="top"> <header>
     <div class="logo-box">
         <div class="company-name-ja">ニューライフ開発株式会社</div>
         <div class="company-name-en">NEW LIFE DEVELOPMENT CO., LTD.</div>
     </div>
     <nav>
         <ul>
-            <li><a href="#message">社長挨拶</a></li>
-            <li><a href="#services">事業内容</a></li>
+            <li><a href="#top">ホーム</a></li>
+            
+            <li>
+                <a href="#services">事業内容 ▾</a>
+                <ul class="dropdown">
+                    <li><a href="service-asset.html">資産管理コンサルティング</a></li>
+                    <li><a href="service-ma.html">ビジネスマッチング（M＆A）</a></li>
+                    <li><a href="service-beauty.html">医療美容サポート</a></li>
+                    <li><a href="service-trade.html">貿易支援事業</a></li>
+                    <li><a href="service-welfare.html">福祉関係事業</a></li>
+                </ul>
+            </li>
+
             <li><a href="#news">NEWS</a></li>
             <li><a href="#contact">お問い合わせ</a></li>
         </ul>
@@ -145,22 +196,18 @@
             <h3>資産管理<br>コンサルティング</h3>
             <span class="read-more">詳細を見る &rarr;</span>
         </a>
-        
         <a href="service-ma.html" class="service-card">
             <h3>ビジネスマッチング<br>（企業間M＆A）</h3>
             <span class="read-more">詳細を見る &rarr;</span>
         </a>
-
         <a href="service-beauty.html" class="service-card">
             <h3>医療美容<br>サポート</h3>
             <span class="read-more">詳細を見る &rarr;</span>
         </a>
-
         <a href="service-trade.html" class="service-card">
             <h3>貿易支援<br>事業</h3>
             <span class="read-more">詳細を見る &rarr;</span>
         </a>
-
         <a href="service-welfare.html" class="service-card">
             <h3>福祉関係<br>事業</h3>
             <span class="read-more">詳細を見る &rarr;</span>
@@ -182,22 +229,15 @@
             <div class="news-date">2025.12.01</div>
             <div class="news-title">
                 <span class="news-tag">政策情報</span>
-                【重要】最新の入国管理局の政策変更について（サンプル記事）
+                【重要】最新の入国管理局の政策変更について
             </div>
         </div>
     </div>
 </div>
 
 <footer id="contact">
+    <div class="footer-contact-title">お問い合わせ</div>
     <div class="footer-info">
         <h3>ニューライフ開発株式会社</h3>
         <p>〒541-0057<br>大阪府大阪市中央区北久宝寺町3-6-1<br>本町南ガーデンシティ7階</p>
-        <p>Email: info@newlife-dev-group.com</p>
-    </div>
-    <div class="copyright">
-        &copy; 2025 NEW LIFE DEVELOPMENT CO., LTD. All Rights Reserved.
-    </div>
-</footer>
-
-</body>
-</html>
+        <p>Email: info@newlife-dev-group.com</p
