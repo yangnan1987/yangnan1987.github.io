@@ -67,7 +67,7 @@
         .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
         .service-card h3 { color: #1a2a3a; font-size: 1.1rem; margin-bottom: 15px; min-height: 3em; display: flex; align-items: center; justify-content: center; }
 
-        /* News - 修改为卡片布局以对应图片2风格 */
+        /* News */
         .news-list { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
         .news-card-home { 
             background: white; 
@@ -104,14 +104,22 @@
         .footer-info { line-height: 2; margin-bottom: 30px; }
         .copyright { opacity: 0.6; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
 
+        /* 移动端修正：解决下拉菜单闪退问题 */
         @media (max-width: 768px) {
-            /* 仅在此处修改：确保移动端导航可见 */
             header { height: auto; flex-direction: column; padding: 15px; }
-            nav > ul { height: auto; flex-wrap: wrap; justify-content: center; gap: 5px; padding: 10px 0; }
-            nav > ul > li > a { padding: 5px 10px; font-size: 0.85rem; height: auto; }
-            .dropdown { position: static; min-width: 100%; box-shadow: none; display: none; }
-            nav > ul > li:hover .dropdown { display: block; }
+            nav { display: block; width: 100%; }
+            nav > ul { height: auto; flex-direction: column; gap: 0; padding: 10px 0; }
+            nav > ul > li { width: 100%; justify-content: center; }
+            nav > ul > li > a { padding: 10px; font-size: 0.9rem; width: 100%; justify-content: center; }
             
+            /* 手机端点击“事业内容”直接跳转到锚点，不显示下拉菜单以防闪退 */
+            /* 或者采用展开式设计：让下拉菜单在手机上直接列出来 */
+            .dropdown { position: static; box-shadow: none; width: 100%; display: none; background-color: #2c3e50; }
+            nav > ul > li:active .dropdown, nav > ul > li:focus .dropdown { display: block; } /* 尝试解决点击闪现 */
+            
+            /* 最稳妥的手机端方案：取消下拉浮层，让用户通过首页的“事业内容”卡片进行跳转 */
+            nav > ul > li:hover .dropdown { display: none; } 
+
             .hero-content h1 { font-size: 2rem; }
             .service-card { width: 100%; }
             .news-card-home { flex-direction: column; align-items: flex-start; gap: 15px; }
@@ -131,8 +139,7 @@
         <ul>
             <li><a href="#top">ホーム</a></li>
             <li>
-                <a href="#services">事業内容 ▾</a>
-                <ul class="dropdown">
+                <a href="#services">事業内容</a> <ul class="dropdown">
                     <li><a href="service-asset.html">資産管理コンサルティング</a></li>
                     <li><a href="service-ma.html">ビジネスマッチング（M＆A）</a></li>
                     <li><a href="service-beauty.html">医療美容サポート</a></li>
@@ -190,7 +197,6 @@
         .then(data => {
             const container = document.getElementById('home-news-container');
             container.innerHTML = ''; 
-            // 显示最新的 5 条
             data.slice(0, 5).forEach(item => {
                 const html = `
                     <div class="news-card-home">
