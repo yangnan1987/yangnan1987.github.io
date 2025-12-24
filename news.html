@@ -35,53 +35,49 @@
         nav > ul > li:hover .dropdown { display: block; }
 
         .container { max-width: 1000px; margin: 60px auto; padding: 0 5%; min-height: 60vh; }
-        h1 { font-size: 2.2rem; color: #1a2a3a; text-align: center; margin-bottom: 50px; }
+        h1 { font-size: 2rem; color: #1a2a3a; text-align: center; margin-bottom: 50px; border-bottom: 2px solid #1a2a3a; display: inline-block; width: 100%; padding-bottom: 15px; }
 
-        /* 新闻列表容器 */
-        .news-full-list { display: flex; flex-direction: column; gap: 20px; }
+        .news-full-list { display: flex; flex-direction: column; gap: 15px; }
         
-        /* 单条新闻卡片样式 */
+        /* 新闻条目样式 */
         .news-card { 
             background: white; 
-            padding: 25px 30px; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+            padding: 20px 30px; 
+            border-radius: 4px; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            transition: 0.3s;
-            border-left: 5px solid #1a2a3a;
+            transition: 0.2s;
         }
-        .news-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+        .news-card:hover { background: #fdfdfd; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         
-        .news-info { flex: 1; padding-right: 20px; }
-        .news-meta { display: flex; align-items: center; gap: 15px; margin-bottom: 8px; }
-        .news-date { color: #888; font-size: 0.9rem; font-weight: bold; }
-        .news-tag { background: #f0f2f5; color: #1a2a3a; padding: 2px 12px; font-size: 0.75rem; border-radius: 20px; font-weight: bold; }
-        .news-title { font-size: 1.1rem; font-weight: 500; color: #2c3e50; line-height: 1.5; }
+        .news-info { flex: 1; display: flex; align-items: baseline; gap: 20px; }
+        .news-date { color: #888; font-size: 0.9rem; font-weight: bold; min-width: 100px; }
+        .news-tag { background: #1a2a3a; color: white; padding: 2px 10px; font-size: 0.75rem; border-radius: 2px; }
+        .news-title { font-size: 1rem; color: #333; }
 
-        /* 跳转按钮样式 */
+        /* 跳转按钮 */
         .news-link-btn { 
             background: #1a2a3a; 
             color: white; 
-            padding: 10px 25px; 
-            border-radius: 25px; 
+            padding: 8px 20px; 
+            border-radius: 4px; 
             font-size: 0.85rem; 
             white-space: nowrap; 
             transition: 0.3s;
-            display: inline-block;
         }
-        .news-link-btn:hover { background: #b38e5d; color: white; box-shadow: 0 4px 10px rgba(179,142,93,0.3); }
+        .news-link-btn:hover { background: #34495e; color: white; }
 
         .back-home { text-align: center; margin-top: 60px; }
-        .btn-outline { display: inline-block; padding: 12px 40px; border: 2px solid #1a2a3a; color: #1a2a3a; border-radius: 30px; font-weight: bold; transition: 0.3s; }
-        .btn-outline:hover { background: #1a2a3a; color: white; }
+        .btn { display: inline-block; padding: 12px 40px; background: #1a2a3a; color: white; border-radius: 4px; }
 
         footer { background: #1a2a3a; color: white; padding: 40px 10%; text-align: center; font-size: 0.9rem; margin-top: 80px; }
 
         @media (max-width: 768px) {
             .news-card { flex-direction: column; align-items: flex-start; gap: 15px; }
-            .news-link-btn { width: 100%; text-align: center; }
+            .news-info { flex-direction: column; gap: 5px; }
+            .news-link-btn { align-self: flex-end; }
         }
     </style>
 </head>
@@ -114,35 +110,22 @@
 </header>
 
 <div class="container">
-    <h1>NEWS</h1>
+    <h1>NEWS 一覧</h1>
     
     <div class="news-full-list">
         
         <div class="news-card">
             <div class="news-info">
-                <div class="news-meta">
-                    <span class="news-date">2025.12.16</span>
-                    <span class="news-tag">お知らせ</span>
-                </div>
-                <div class="news-title">ホームページを全面リニューアルいたしました。</div>
+                <span class="news-date">2025.12.16</span>
+                <span class="news-tag">お知らせ</span>
+                <div class="news-title">ホームページをリニューアルいたしました。</div>
             </div>
-            <a href="news-20251216.html" class="news-link-btn">詳細を見る</a>
+            <a href="这里填入链接地址" class="news-link-btn">詳細を見る</a>
         </div>
-        <div class="news-card">
-            <div class="news-info">
-                <div class="news-meta">
-                    <span class="news-date">2025.12.01</span>
-                    <span class="news-tag">レポート</span>
-                </div>
-                <div class="news-title">11月度 月次収支報告および資産運用分析レポート</div>
-            </div>
-            <a href="report-202511.pdf" class="news-link-btn">PDFを開く</a>
         </div>
-
-    </div>
 
     <div class="back-home">
-        <a href="index.html" class="btn-outline">トップページに戻る</a>
+        <a href="index.html" class="btn">トップページに戻る</a>
     </div>
 </div>
 
