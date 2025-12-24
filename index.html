@@ -67,11 +67,35 @@
         .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
         .service-card h3 { color: #1a2a3a; font-size: 1.1rem; margin-bottom: 15px; min-height: 3em; display: flex; align-items: center; justify-content: center; }
 
-        /* News */
-        .news-list { max-width: 800px; margin: 0 auto; }
-        .news-item { border-bottom: 1px solid #ddd; padding: 15px 0; display: flex; align-items: baseline; }
-        .news-date { font-weight: bold; color: #1a2a3a; width: 120px; font-size: 0.9rem; }
-        .news-tag { background: #1a2a3a; color: white; padding: 2px 8px; font-size: 0.7rem; border-radius: 2px; margin-right: 10px; }
+        /* News - 修改为卡片布局以对应图片2的风格 */
+        .news-list { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+        .news-card-home { 
+            background: white; 
+            padding: 20px 30px; 
+            border-radius: 4px; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            transition: 0.2s;
+            border-left: 5px solid #1a2a3a;
+        }
+        .news-card-home:hover { background: #fdfdfd; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .news-info-home { flex: 1; display: flex; align-items: baseline; gap: 20px; }
+        .news-date-home { color: #888; font-size: 0.9rem; font-weight: bold; min-width: 100px; }
+        .news-tag-home { background: #1a2a3a; color: white; padding: 2px 10px; font-size: 0.75rem; border-radius: 2px; }
+        .news-title-home { font-size: 1rem; color: #333; }
+        .news-link-btn-home { 
+            background: #1a2a3a; 
+            color: white; 
+            padding: 8px 20px; 
+            border-radius: 4px; 
+            font-size: 0.85rem; 
+            white-space: nowrap; 
+            transition: 0.3s;
+        }
+        .news-link-btn-home:hover { background: #34495e; }
+
         .view-more-btn { display: inline-block; margin-top: 30px; color: #1a2a3a; text-decoration: underline; font-size: 0.9rem; cursor: pointer; }
 
         /* Footer */
@@ -84,6 +108,9 @@
             nav { display: none; }
             .hero-content h1 { font-size: 2rem; }
             .service-card { width: 100%; }
+            .news-card-home { flex-direction: column; align-items: flex-start; gap: 15px; }
+            .news-info-home { flex-direction: column; gap: 5px; }
+            .news-link-btn-home { align-self: flex-end; }
         }
     </style>
 </head>
@@ -126,7 +153,7 @@
         <p>
             境界なき未来へ、真の価値を創造するパートナーとして、グローバル化が進む現代において、資産の配置やライフスタイルの選択肢は、かつてないほど多様化しています。<br><br>
             私たちは、資産管理コンサルティング、ビジネスマッチング（企業間M＆A）、医療美容、貿易支援、福祉関係という5つの柱を通じて、お客様の人生とビジネス的重要なターニングポイントをサポートしています。<br><br>
-            単なるサービスの提供にとどまらず、お客様一人ひとりの想いに寄り添い、専門性とローカルな知見を融合させることで、国境を越えた「自由」と「成功」を形にします。日本と中国をつなぐ架け橋として、私たちは常に誠実であり続け、共に豊かな未来を築いてまいります。
+            単なるサービスの提供にとどまらず、お客様一人ひとりの想いに寄り添い、専門性とローカルな知見を融合させることで、国境を越えた「自由」と「成功」を形にします。日本と中国をつなぐ架け桥として、私たちは常に誠実であり続け、共に豊かな未来を築いてまいります。
         </p>
         <div class="signature">代表取締役　宋 超</div>
     </div>
@@ -157,16 +184,16 @@
         .then(data => {
             const container = document.getElementById('home-news-container');
             container.innerHTML = ''; 
-            // 这里已经为您改成了显示最新的 5 条
+            // 显示最新的 5 条
             data.slice(0, 5).forEach(item => {
                 const html = `
-                    <div class="news-item">
-                        <div class="news-item-content">
-                            <div class="news-date">${item.date}</div>
-                            <span class="news-tag">${item.tag}</span>
-                            <div class="news-title-text">${item.title}</div>
+                    <div class="news-card-home">
+                        <div class="news-info-home">
+                            <span class="news-date-home">${item.date}</span>
+                            <span class="news-tag-home">${item.tag}</span>
+                            <div class="news-title-home">${item.title}</div>
                         </div>
-                        <a href="${item.url}" class="news-btn-small">詳細を見る</a>
+                        <a href="${item.url}" class="news-link-btn-home">詳細を見る</a>
                     </div>`;
                 container.innerHTML += html;
             });
@@ -174,7 +201,7 @@
             document.getElementById('home-news-container').innerHTML = 'ニュースの読み込みに失敗しました。';
         });
 </script>
-    
+
 <footer id="contact">
     <div class="footer-contact-title">お問い合わせ</div>
     <div class="footer-info">
