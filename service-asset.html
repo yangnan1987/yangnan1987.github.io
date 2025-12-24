@@ -66,13 +66,43 @@
         footer { background: #1a2a3a; color: white; padding: 40px 10%; text-align: center; font-size: 0.9rem; }
         
         /* 响应式调整 - 修正消失问题 */
-        @media (max-width: 768px) {
-            header { height: auto; flex-direction: column; padding: 15px; }
-            nav > ul { height: auto; flex-wrap: wrap; justify-content: center; gap: 5px; padding: 10px 0; }
-            nav > ul > li > a { padding: 5px 10px; font-size: 0.85rem; height: auto; }
-            .dropdown { position: static; min-width: 100%; box-shadow: none; display: none; }
-            nav > ul > li:hover .dropdown { display: block; }
-            .sub-hero h1 { font-size: 1.8rem; }
+      @media (max-width: 768px) {
+            header { 
+                height: auto; 
+                flex-direction: column; 
+                padding: 10px 5%; 
+            }
+            .logo-box { 
+                text-align: center; 
+                margin-bottom: 10px; 
+            }
+            nav { 
+                width: 100%; 
+            }
+            nav > ul { 
+                height: auto; 
+                display: flex; 
+                flex-direction: row; /* 强制横向排列 */
+                justify-content: center; 
+                flex-wrap: wrap; /* 如果一行放不下会自动折行 */
+                gap: 5px; 
+            }
+            nav > ul > li { 
+                height: auto; 
+            }
+            nav > ul > li > a { 
+                padding: 8px 12px; 
+                font-size: 0.85rem; /* 稍微缩小字体 */
+            }
+            
+            /* 手机端下拉菜单保持隐藏，点击父级直接跳转到内容区 */
+            .dropdown { display: none !important; }
+
+            .hero-content h1 { font-size: 2rem; }
+            .service-card { width: 100%; }
+            .news-card-home { flex-direction: column; align-items: flex-start; gap: 15px; }
+            .news-info-home { flex-direction: column; gap: 5px; }
+            .news-link-btn-home { align-self: flex-end; }
         }
     </style>
 </head>
