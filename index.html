@@ -4,30 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEW LIFE DEVELOPMENT CO., LTD.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        body, html { margin: 0; padding: 0; font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif; color: #333; line-height: 1.6; }
+        /* 全局设置 */
+        body, html { margin: 0; padding: 0; font-family: 'Noto Sans JP', 'Helvetica Neue', Arial, sans-serif; color: #333; line-height: 1.8; scroll-behavior: smooth; }
+        a { text-decoration: none; color: inherit; }
         
         /* 导航栏 */
         header {
             background-color: #1a2a3a;
             color: white;
-            padding: 20px 50px;
+            padding: 15px 5%;
             position: sticky;
             top: 0;
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         .logo-box { text-align: left; }
-        .company-name-ja { font-size: 1.1rem; font-weight: bold; }
-        .company-name-en { font-size: 0.8rem; letter-spacing: 1px; opacity: 0.8; }
+        .company-name-ja { font-size: 1.2rem; font-weight: 700; }
+        .company-name-en { font-size: 0.75rem; letter-spacing: 1px; opacity: 0.8; }
         
-        /* 首页大图区域 */
+        /* 导航菜单（桌面端） */
+        nav ul { list-style: none; display: flex; gap: 20px; padding: 0; margin: 0; }
+        nav a { font-size: 0.9rem; color: #ddd; transition: color 0.3s; }
+        nav a:hover { color: white; border-bottom: 1px solid white; }
+
+        /* Hero 区域 */
         .hero {
             position: relative;
-            height: 90vh;
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('hero-bg.jpg');
+            height: 85vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('hero-bg.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -36,22 +45,59 @@
             color: white;
             text-align: center;
         }
-        .hero-content h1 { font-size: 4rem; margin: 0; font-weight: bold; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-        .hero-content p { font-size: 1.5rem; margin-top: 20px; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+        .hero-content h1 { font-size: 3.5rem; margin: 0; font-weight: 700; text-shadow: 0 4px 10px rgba(0,0,0,0.6); letter-spacing: 2px; }
+        .hero-content p { font-size: 1.2rem; margin-top: 20px; font-weight: 300; text-shadow: 0 2px 5px rgba(0,0,0,0.6); }
 
-        /* 内容板块 */
-        .section { padding: 80px 10%; text-align: center; }
-        .section h2 { font-size: 2.5rem; color: #1a2a3a; margin-bottom: 40px; border-bottom: 2px solid #1a2a3a; display: inline-block; padding-bottom: 10px; }
-        .content-grid { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; }
-        .card { background: #f4f4f4; padding: 30px; width: 30%; min-width: 280px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .card h3 { color: #1a2a3a; }
+        /* 通用板块样式 */
+        .section { padding: 80px 10%; }
+        .section-title { font-size: 2rem; color: #1a2a3a; margin-bottom: 50px; text-align: center; font-weight: 700; letter-spacing: 1px; }
+        .section-title::after { content: ""; display: block; width: 60px; height: 3px; background: #1a2a3a; margin: 15px auto 0; }
+        
+        /* 灰色背景块 */
+        .bg-gray { background-color: #f9f9f9; }
+
+        /* 社长致辞板块 */
+        .message-container { max-width: 900px; margin: 0 auto; line-height: 2; text-align: justify; }
+        .message-lead { font-size: 1.2rem; font-weight: bold; color: #1a2a3a; margin-bottom: 30px; text-align: center; }
+        .signature { text-align: right; margin-top: 40px; font-size: 1.2rem; font-weight: bold; }
+
+        /* 事业内容（5大板块） */
+        .services-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; }
+        .service-card { 
+            background: white; 
+            width: 300px; 
+            padding: 40px 20px; 
+            border-radius: 4px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+            text-align: center; 
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border-top: 4px solid #1a2a3a;
+        }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        .service-card h3 { color: #1a2a3a; font-size: 1.1rem; margin-bottom: 15px; min-height: 3em; display: flex; align-items: center; justify-content: center; }
+        .read-more { font-size: 0.85rem; color: #666; margin-top: 15px; display: inline-block; border-bottom: 1px solid #ccc; }
+
+        /* News 板块 */
+        .news-list { max-width: 800px; margin: 0 auto; }
+        .news-item { border-bottom: 1px solid #ddd; padding: 15px 0; display: flex; align-items: baseline; flex-wrap: wrap; }
+        .news-date { font-weight: bold; color: #1a2a3a; width: 120px; font-size: 0.9rem; }
+        .news-title { flex: 1; }
+        .news-tag { background: #1a2a3a; color: white; padding: 2px 8px; font-size: 0.7rem; border-radius: 2px; margin-right: 10px; }
 
         /* 页脚 */
-        footer { background: #1a2a3a; color: white; padding: 40px 10%; text-align: center; font-size: 0.9rem; }
+        footer { background: #1a2a3a; color: white; padding: 60px 10%; text-align: center; font-size: 0.9rem; }
+        .footer-info { margin-bottom: 20px; line-height: 2; }
+        .copyright { opacity: 0.6; font-size: 0.8rem; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
 
+        /* 手机端适配 */
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.5rem; }
-            .card { width: 100%; }
+            .hero-content h1 { font-size: 2rem; }
+            .service-card { width: 100%; }
+            nav { display: none; /* 手机端暂时隐藏菜单，后续可加汉堡按钮 */ }
+            header { justify-content: center; }
+            .news-item { flex-direction: column; }
+            .news-date { margin-bottom: 5px; }
         }
     </style>
 </head>
@@ -62,41 +108,95 @@
         <div class="company-name-ja">ニューライフ開発株式会社</div>
         <div class="company-name-en">NEW LIFE DEVELOPMENT CO., LTD.</div>
     </div>
+    <nav>
+        <ul>
+            <li><a href="#message">社長挨拶</a></li>
+            <li><a href="#services">事業内容</a></li>
+            <li><a href="#news">NEWS</a></li>
+            <li><a href="#contact">お問い合わせ</a></li>
+        </ul>
+    </nav>
 </header>
 
 <div class="hero">
     <div class="hero-content">
         <h1>境界なき未来へ<br>真の価値を創造する</h1>
-        <p>国境を越えた「自由」と「成功」を形にする</p>
+        <p>日本と世界をつなぐ、信頼のパートナー</p>
     </div>
 </div>
 
-<div class="section" id="about">
-    <h2>ABOUT US</h2>
-    <p>我们致力于为客户提供最优质的不动产开发与咨询服务。立足于日本大阪，面向全球视野。</p>
-</div>
-
-<div class="section" id="services" style="background-color: white;">
-    <h2>OUR SERVICES</h2>
-    <div class="content-grid">
-        <div class="card">
-            <h3>不动产开发</h3>
-            <p>为您打造高价值的居住与商业空间。</p>
-        </div>
-        <div class="card">
-            <h3>资产配置</h3>
-            <p>专业的市场分析，助您实现财富稳健增长。</p>
-        </div>
-        <div class="card">
-            <h3>咨询服务</h3>
-            <p>全方位的法律与税务咨询支持。</p>
+<div class="section" id="message">
+    <h2 class="section-title">社長挨拶</h2>
+    <div class="message-container">
+        <p class="message-lead">境界なき未来へ、真の価値を創造するパートナーとして</p>
+        <p>グローバル化が進む現代において、資産の配置やライフスタイルの選択肢は、かつてないほど多様化しています。</p>
+        <p>私たちは、「海外拠点構築のコンサルティング」、資産管理コンサルティング、ビジネスマッチング（企業間M＆A）、医療美容、貿易支援、福祉関係という5つの柱を通じて、お客様の人生とビジネスの重要なターニングポイントをサポートしています。</p>
+        <p>単なるサービスの提供にとどまらず、お客様一人ひとりの想いに寄り添い、専門性とローカルな知見を融合させることで、国境を越えた「自由」と「成功」を形にします。日本と中国をつなぐ架け橋として、私たちは常に誠実であり続け、共に豊かな未来を築いてまいります。</p>
+        <div class="signature">
+            <p>代表取締役　宋 超</p>
         </div>
     </div>
 </div>
 
-<footer>
-    <p>© 2025 NEW LIFE DEVELOPMENT CO., LTD. All Rights Reserved.</p>
-    <p>大阪府大阪市阿倍野区阿倍野筋1-1-43</p>
+<div class="section bg-gray" id="services">
+    <h2 class="section-title">事業内容</h2>
+    <div class="services-grid">
+        <a href="service-asset.html" class="service-card">
+            <h3>資産管理<br>コンサルティング</h3>
+            <span class="read-more">詳細を見る &rarr;</span>
+        </a>
+        
+        <a href="service-ma.html" class="service-card">
+            <h3>ビジネスマッチング<br>（企業間M＆A）</h3>
+            <span class="read-more">詳細を見る &rarr;</span>
+        </a>
+
+        <a href="service-beauty.html" class="service-card">
+            <h3>医療美容<br>サポート</h3>
+            <span class="read-more">詳細を見る &rarr;</span>
+        </a>
+
+        <a href="service-trade.html" class="service-card">
+            <h3>貿易支援<br>事業</h3>
+            <span class="read-more">詳細を見る &rarr;</span>
+        </a>
+
+        <a href="service-welfare.html" class="service-card">
+            <h3>福祉関係<br>事業</h3>
+            <span class="read-more">詳細を見る &rarr;</span>
+        </a>
+    </div>
+</div>
+
+<div class="section" id="news">
+    <h2 class="section-title">NEWS</h2>
+    <div class="news-list">
+        <div class="news-item">
+            <div class="news-date">2025.12.16</div>
+            <div class="news-title">
+                <span class="news-tag">お知らせ</span>
+                ホームページをリニューアルいたしました。
+            </div>
+        </div>
+        <div class="news-item">
+            <div class="news-date">2025.12.01</div>
+            <div class="news-title">
+                <span class="news-tag">政策情報</span>
+                【重要】最新の入国管理局の政策変更について（サンプル記事）
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer id="contact">
+    <div class="footer-info">
+        <h3>ニューライフ開発株式会社</h3>
+        <p>〒541-0057<br>大阪府大阪市中央区北久宝寺町3-6-1<br>本町南ガーデンシティ7階</p>
+        <p>Email: info@newlife-dev-group.com</p>
+    </div>
+    <div class="copyright">
+        &copy; 2025 NEW LIFE DEVELOPMENT CO., LTD. All Rights Reserved.
+    </div>
 </footer>
 
 </body>
