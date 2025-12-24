@@ -152,27 +152,29 @@
 </div>
 
 <script>
-    // 自动读取新闻并显示在主页
     fetch('news-data.json')
         .then(response => response.json())
         .then(data => {
             const container = document.getElementById('home-news-container');
-            container.innerHTML = ''; // 清空加载文字
-            // 只取最新的前 3 条
-            data.slice(0, 3).forEach(item => {
+            container.innerHTML = ''; 
+            // 这里已经为您改成了显示最新的 5 条
+            data.slice(0, 5).forEach(item => {
                 const html = `
                     <div class="news-item">
-                        <div class="news-date">${item.date}</div>
-                        <div class="news-title">
+                        <div class="news-item-content">
+                            <div class="news-date">${item.date}</div>
                             <span class="news-tag">${item.tag}</span>
-                            ${item.title}
+                            <div class="news-title-text">${item.title}</div>
                         </div>
+                        <a href="${item.url}" class="news-btn-small">詳細を見る</a>
                     </div>`;
                 container.innerHTML += html;
             });
+        }).catch(err => {
+            document.getElementById('home-news-container').innerHTML = 'ニュースの読み込みに失敗しました。';
         });
 </script>
-
+    
 <footer id="contact">
     <div class="footer-contact-title">お問い合わせ</div>
     <div class="footer-info">
