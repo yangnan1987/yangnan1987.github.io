@@ -73,43 +73,85 @@
         footer { background: #1a2a3a; color: white; padding: 40px 10%; text-align: center; font-size: 0.9rem; margin-top: 80px; }
 
        @media (max-width: 768px) {
-            header { 
-                height: auto; 
-                flex-direction: column; 
-                padding: 10px 5%; 
-            }
-            .logo-box { 
-                text-align: center; 
-                margin-bottom: 10px; 
-            }
-            nav { 
-                width: 100%; 
-            }
-            nav > ul { 
-                height: auto; 
-                display: flex; 
-                flex-direction: row; /* 强制横向排列 */
-                justify-content: center; 
-                flex-wrap: wrap; /* 如果一行放不下会自动折行 */
-                gap: 5px; 
-            }
-            nav > ul > li { 
-                height: auto; 
-            }
-            nav > ul > li > a { 
-                padding: 8px 12px; 
-                font-size: 0.85rem; /* 稍微缩小字体 */
-            }
-            
-            /* 手机端下拉菜单保持隐藏，点击父级直接跳转到内容区 */
-            .dropdown { display: none !important; }
+    /* --- 导航栏修复 --- */
+    header { 
+        height: auto; 
+        flex-direction: column; 
+        padding: 10px 5%; 
+    }
+    .logo-box { 
+        text-align: center; 
+        margin-bottom: 10px; 
+    }
+    nav { 
+        width: 100%; 
+    }
+    nav > ul { 
+        height: auto; 
+        display: flex; 
+        flex-direction: row; 
+        justify-content: center; 
+        flex-wrap: wrap; 
+        gap: 5px; 
+    }
+    nav > ul > li { 
+        height: auto; 
+    }
+    nav > ul > li > a { 
+        padding: 8px 12px; 
+        font-size: 0.85rem; 
+    }
+    .dropdown { display: none !important; }
 
-            .hero-content h1 { font-size: 2rem; }
-            .service-card { width: 100%; }
-            .news-card-home { flex-direction: column; align-items: flex-start; gap: 15px; }
-            .news-info-home { flex-direction: column; gap: 5px; }
-            .news-link-btn-home { align-self: flex-end; }
-        }
+    /* --- Hero区域适配 --- */
+    .hero-content h1 { font-size: 2rem; }
+    .service-card { width: 100%; }
+
+    /* --- NEWS页面卡片修复 (解决截图中的重叠问题) --- */
+    .news-card, .news-card-home { 
+        flex-direction: column; /* 强制纵向排列，防止重叠 */
+        align-items: flex-start !important; 
+        gap: 15px !important; 
+        padding: 20px !important;
+    }
+
+    /* 修复日期和标签这一行的排列 */
+    .news-info, .news-info-home { 
+        flex-direction: row !important; /* 日期和标签横向排列 */
+        flex-wrap: wrap;
+        align-items: center !important;
+        gap: 10px !important; 
+        width: 100%;
+        display: flex !important;
+    }
+
+    /* 确保日期不缩水 */
+    .news-date, .news-date-home {
+        min-width: auto !important;
+        margin-right: 10px;
+    }
+
+    /* 标题强制另起一行，解决重叠 */
+    .news-title, .news-title-home { 
+        display: block !important;
+        width: 100%;
+        margin-top: 5px;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #333;
+    }
+
+    /* 按钮靠右下角对齐 */
+    .news-link-btn, .news-link-btn-home { 
+        align-self: flex-end !important; 
+        margin-top: 5px;
+    }
+
+    /* 针对锚点跳转的偏移修复 */
+    #message, #services, #news, #contact { 
+        scroll-margin-top: 140px; 
+    }
+}
     </style>
 </head>
 <body>
