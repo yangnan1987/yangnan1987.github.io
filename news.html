@@ -102,6 +102,9 @@
             }
             .dropdown { display: none !important; }
 
+            /* 在手机端去掉事业内容旁边的小箭头 */
+            .mobile-arrow-hide { display: none !important; }
+
             .news-card { 
                 flex-direction: column; 
                 align-items: flex-start !important; 
@@ -148,7 +151,7 @@
         <ul>
             <li><a href="index.html">ホーム</a></li>
             <li>
-                <a href="index.html#services">事業内容 ▾</a>
+                <a href="index.html#services">事業内容<span class="mobile-arrow-hide"> ▾</span></a>
                 <ul class="dropdown">
                     <li><a href="service-asset.html">資産管理コンサルティング</a></li>
                     <li><a href="service-ma.html">ビジネスマッチング（M＆A）</a></li>
