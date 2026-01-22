@@ -215,6 +215,12 @@
             const container = document.getElementById('home-news-container');
             container.innerHTML = ''; 
             data.slice(0, 5).forEach(item => {
+                // 根据 type 判断链接方式
+                const linkHref = item.type === 'internal' 
+                    ? `news-detail.html?id=${item.id}` 
+                    : item.url;
+                const linkTarget = item.type === 'internal' ? '' : 'target="_blank"';
+                
                 const html = `
                     <div class="news-card-home">
                         <div class="news-info-home">
@@ -222,7 +228,7 @@
                             <span class="news-tag-home">${item.tag}</span>
                             <div class="news-title-home">${item.title}</div>
                         </div>
-                        <a href="${item.url}" class="news-link-btn-home">詳細を見る</a>
+                        <a href="${linkHref}" class="news-link-btn-home" ${linkTarget}>詳細を見る</a>
                     </div>`;
                 container.innerHTML += html;
             });

@@ -1,29 +1,39 @@
 [
   {
+    "id": "n_20260119",
+    "type": "internal",
     "date": "2026.1.19",
     "tag": "重要",
     "title": "高市首相、23日解散を正式表明　2月8日投開票",
-    "url": "https://www.yomiuri.co.jp/election/shugiin/20260119-GYT1T00308/"
-  },  
+    "content": "<p>高市早苗首相は19日、衆議院を23日に解散し、2月8日に投開票を行うことを正式に表明しました。この決定は、現在の政治情勢と経済政策の継続性を確保するための重要な判断とされています。</p><p>解散総選挙では、経済政策、外交方針、社会保障制度の改革などが主要な争点となる見込みです。各政党は、有権者に対して明確な政策ビジョンを提示することが求められています。</p>"
+  },
   {
+    "id": "n_20260105",
+    "type": "external",
     "date": "2026.1.5",
     "tag": "重要",
     "title": "日本 長期金利上昇、一時2.125%",
     "url": "https://www.nikkei.com/article/DGXZQOUB050LV0V00C26A1000000/"
-  },  
+  },
   {
+    "id": "n_20251224",
+    "type": "external",
     "date": "2025.12.24",
     "tag": "重要",
     "title": "海外居住者の不動産仲介、消費税の免税廃止",
     "url": "https://www.nikkei.com/article/DGXZQOUA226PW0S5A221C2000000/"
   },
   {
+    "id": "n_20251216",
+    "type": "external",
     "date": "2025.12.16",
     "tag": "重要",
     "title": "不動産登記時の国籍記載、2026年度に義務化",
     "url": "https://www.nikkei.com/article/DGXZQOUA154LS0V11C25A2000000/"
   },
   {
+    "id": "n_20251016",
+    "type": "external",
     "date": "2025.10.16",
     "tag": "重要",
     "title": "経営管理ビザ、投資額3000万円へ引き上げ",

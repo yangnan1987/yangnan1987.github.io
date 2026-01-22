@@ -182,6 +182,12 @@
             const container = document.getElementById('full-news-list');
             container.innerHTML = ''; 
             data.forEach(item => {
+                // 根据 type 判断链接方式
+                const linkHref = item.type === 'internal' 
+                    ? `news-detail.html?id=${item.id}` 
+                    : item.url;
+                const linkTarget = item.type === 'internal' ? '' : 'target="_blank"';
+                
                 const html = `
                     <div class="news-card">
                         <div class="news-info">
@@ -189,7 +195,7 @@
                             <span class="news-tag">${item.tag}</span>
                             <div class="news-title">${item.title}</div>
                         </div>
-                        <a href="${item.url}" class="news-link-btn" target="_blank">詳細を見る</a>
+                        <a href="${linkHref}" class="news-link-btn" ${linkTarget}>詳細を見る</a>
                     </div>`;
                 container.innerHTML += html;
             });
