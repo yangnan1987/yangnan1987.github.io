@@ -279,12 +279,12 @@
                     </div>
                 `;
 
-                // 如果有图片，添加图片
-                if (newsItem.image) {
-                    html += `<img src="${newsItem.image}" alt="${newsItem.title}" class="news-detail-image">`;
-                }
+                // 注释掉：自动添加图片的代码，因为图片已在content HTML中指定位置
+                // if (newsItem.image) {
+                //     html += `<img src="${newsItem.image}" alt="${newsItem.title}" class="news-detail-image">`;
+                // }
 
-                // 添加正文内容
+                // 添加正文内容（图片将在content HTML中指定的位置显示）
                 html += `<div class="news-detail-content">${newsItem.content || ''}</div>`;
 
                 container.innerHTML = html;
