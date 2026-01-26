@@ -263,8 +263,8 @@
                     return;
                 }
 
-                // 只处理 internal 类型的新闻
-                if (newsItem.type !== 'internal') {
+                // 处理 internal 和 event 类型的新闻
+                if (newsItem.type !== 'internal' && newsItem.type !== 'event') {
                     container.innerHTML = '<div class="error-message">この記事は外部リンクタイプです。ニュース一覧ページからアクセスしてください。</div>';
                     return;
                 }
