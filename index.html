@@ -287,12 +287,12 @@
         
         // 限制显示前5条
         filteredData.slice(0, 5).forEach(item => {
-            // 根据 type 判断链接方式
-            const linkHref = item.type === 'internal' 
+            // 根据 type 判断链接方式（internal 和 event 都跳转详情页）
+            const linkHref = (item.type === 'internal' || item.type === 'event')
                 ? `news-detail.html?id=${item.id}` 
                 : (item.url || '#');
-            const linkTarget = item.type === 'internal' ? '' : 'target="_blank"';
-            const linkText = item.type === 'internal' ? '詳細を見る' : '記事を読む';
+            const linkTarget = (item.type === 'internal' || item.type === 'event') ? '' : 'target="_blank"';
+            const linkText = (item.type === 'internal' || item.type === 'event') ? '詳細を見る' : '記事を読む';
             const tagClass = getTagClass(item.tag);
             
             const html = `
