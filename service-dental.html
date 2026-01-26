@@ -40,6 +40,22 @@
 
         .container { max-width: 1000px; margin: 0 auto; padding: 0 5%; }
 
+        /* Service Row 移动端响应式 */
+        @media (max-width: 768px) {
+            .service-row {
+                flex-direction: column !important;
+            }
+            .service-row.reverse {
+                flex-direction: column !important;
+            }
+            .service-row > div {
+                min-width: 100% !important;
+            }
+            .service-row > div[style*="position: absolute"] {
+                display: none;
+            }
+        }
+
         /* Footer */
         footer { background: #1a2a3a; color: white; padding: 60px 10%; text-align: center; }
         .footer-contact-title { font-size: 1.5rem; font-weight: bold; margin-bottom: 30px; }
@@ -109,43 +125,99 @@
 </header>
 
 <main>
-    <div class="page-header" style="background-color: #1a2a3a; padding: 60px 0; text-align: center; color: #fff;">
+    <div class="page-header" style="background: linear-gradient(135deg, #1a2a3a 0%, #2c3e50 100%); padding: 100px 0; text-align: center; color: #fff;">
         <div class="container">
-            <h1 style="font-size: 2.2rem; margin-bottom: 10px;">歯科関連事業</h1>
-            <p style="font-size: 1rem; opacity: 0.8;">Dental Business Solutions</p>
+            <h1 style="font-size: 2.8rem; margin-bottom: 15px; letter-spacing: 0.05em; font-weight: 700;">歯科医療ビジネスソリューション</h1>
+            <p style="font-size: 1.2rem; opacity: 0.9; font-weight: 300; letter-spacing: 0.1em;">DENTAL BUSINESS SOLUTIONS</p>
         </div>
     </div>
-    <div class="container" style="padding: 60px 0;">
-        <div style="text-align: center; max-width: 800px; margin: 0 auto 60px;">
-            <h2 style="font-size: 1.8rem; color: #1a2a3a; margin-bottom: 20px;">歯科医療の未来を、経営と技術の両面からサポート</h2>
-            <p style="line-height: 1.8; color: #555;">
-                私たちは、歯科医院の経営最適化から、世界と繋がる学術交流まで、包括的なソリューションを提供します。<br>
-                現場の課題を解決し、歯科医師の皆様が「医療」に専念できる環境づくりに貢献します。
-            </p>
+    <div class="container" style="max-width: 900px; margin: 0 auto; text-align: center; padding: 80px 5%;">
+        <h2 style="font-size: 2.2rem; color: #1a2a3a; margin-bottom: 40px; line-height: 1.5; font-weight: bold;">
+            「経営戦略」×「AI技術」×「国際ネットワーク」<br>
+            <span style="font-size: 0.8em; color: #555; font-weight: normal; margin-top: 10px; display: block;">3つの力で、歯科医療の未来を再定義する。</span>
+        </h2>
+        <p style="font-size: 1.1rem; color: #555; line-height: 2.2;">
+            私たちは、従来の経営コンサルティングの枠を超え、急速に進化する<strong style="color: #1a2a3a; border-bottom: 1px solid #1a2a3a;">AI技術の導入</strong>や、<br>
+            海外の先進事例を取り入れた次世代型の歯科医院モデルを提案します。<br><br>
+            経営不振の解決から、DXによる集患革命、そしてグローバルな学術連携まで。<br>
+            先生方のビジョンを具現化するための、戦略的パートナーとなります。
+        </p>
+    </div>
+    <div class="container" style="max-width: 1100px; margin: 0 auto; padding: 0 5% 80px;">
+        <div class="service-row" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-bottom: 120px; gap: 50px;">
+            <div style="flex: 1; min-width: 300px; position: relative;">
+                <div style="position: absolute; top: -60px; left: -20px; font-size: 8rem; font-weight: 900; color: #f0f0f0; z-index: -1;">01</div>
+                <h3 style="font-size: 1.8rem; color: #1a2a3a; margin-bottom: 25px; font-weight: bold;">
+                    歯科経営コンサルティング × AI分析
+                </h3>
+                <p style="color: #444; font-weight: bold; margin-bottom: 20px; font-size: 1.1rem;">
+                    「勘と経験」の経営から、「データ駆動」の経営へ。
+                </p>
+                <p style="color: #666; line-height: 1.8; margin-bottom: 20px;">
+                    経営不振に陥った医院の再生支援や、収益構造の抜本的な改善を行います。私たちの強みは、AIを活用した深層データ分析です。レセプトデータや予約履歴から患者様の行動パターンを解析し、潜在的な課題を可視化。確実な収益改善プランを実行します。
+                </p>
+            </div>
+            <div style="flex: 1; min-width: 300px; background: #f8f9fa; padding: 50px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                <h4 style="margin-bottom: 20px; color: #1a2a3a; border-left: 4px solid #1a2a3a; padding-left: 15px; font-size: 1.2rem;">主な支援内容</h4>
+                <ul style="list-style: none; padding: 0; color: #555; line-height: 2.2;">
+                    <li>✅ 経営不振医院のターンアラウンド支援</li>
+                    <li>✅ AIによる診療圏分析・収益シミュレーション</li>
+                    <li>✅ 財務体質の改善・資金調達サポート</li>
+                    <li>✅ スタッフ評価制度の再構築</li>
+                </ul>
+            </div>
         </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
-            <div class="service-box" style="padding: 30px; background: #f9f9fa; border-radius: 8px; border-top: 4px solid #1a2a3a;">
-                <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: #1a2a3a;">01. 経営コンサルティング</h3>
-                <p style="color: #666; line-height: 1.6;">
-                    経営不振に陥った医院の再生支援、収益構造の改善、そして新規開業の戦略立案まで。<br>
-                    データに基づいた客観的な分析を行い、スタッフ教育やオペレーション改善も含めた、持続可能な医院経営を実現します。
+        <div class="service-row reverse" style="display: flex; flex-wrap: wrap; flex-direction: row-reverse; align-items: center; justify-content: space-between; margin-bottom: 120px; gap: 50px;">
+            <div style="flex: 1; min-width: 300px; position: relative;">
+                <div style="position: absolute; top: -60px; right: -20px; font-size: 8rem; font-weight: 900; color: #f0f0f0; z-index: -1;">02</div>
+                <h3 style="font-size: 1.8rem; color: #1a2a3a; margin-bottom: 25px; font-weight: bold;">
+                    歯科ビジネス・プロデュース (DX推進)
+                </h3>
+                <p style="color: #444; font-weight: bold; margin-bottom: 20px; font-size: 1.1rem;">
+                    「待つ医療」から、AIで「選ばれる医療」へ。
+                </p>
+                <p style="color: #666; line-height: 1.8; margin-bottom: 20px;">
+                    医院の「強み」を再定義し、競合との差別化を図ります。最新のDX（デジタルトランスフォーメーション）ツールを導入し、AIチャットボットによる24時間患者対応や、CRM（顧客管理）の自動化を実現。マーケティングとオペレーションの両輪で、集患力を最大化します。
                 </p>
             </div>
-            <div class="service-box" style="padding: 30px; background: #f9f9fa; border-radius: 8px; border-top: 4px solid #1a2a3a;">
-                <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: #1a2a3a;">02. 歯科ビジネス・プロデュース</h3>
-                <p style="color: #666; line-height: 1.6;">
-                    医院の「強み」を発掘し、新たな市場を開拓します。<br>
-                    自費診療のマーケティング、ブランディング構築、地域医療連携の推進など、攻めの姿勢で医院の成長を後押しするパートナーとなります。
-                </p>
-            </div>
-            <div class="service-box" style="padding: 30px; background: #f9f9fa; border-radius: 8px; border-top: 4px solid #1a2a3a;">
-                <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: #1a2a3a;">03. グローバル学術交流</h3>
-                <p style="color: #666; line-height: 1.6;">
-                    日本の歯科医師と海外の先進技術を繋ぐ架け橋となります。<br>
-                    海外学術交流会の企画・運営、現地視察ツアー、最先端技術の研修などを通じて、医療技術の国際的な発展と人的ネットワークの構築に貢献します。
-                </p>
+            <div style="flex: 1; min-width: 300px; background: #f8f9fa; padding: 50px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                <h4 style="margin-bottom: 20px; color: #1a2a3a; border-left: 4px solid #1a2a3a; padding-left: 15px; font-size: 1.2rem;">主な支援内容</h4>
+                <ul style="list-style: none; padding: 0; color: #555; line-height: 2.2;">
+                    <li>✅ 自費診療特化のブランディング構築</li>
+                    <li>✅ デジタルマーケティング・SEO/MEO対策</li>
+                    <li>✅ 院内DX（AI予約管理・自動精算機導入）</li>
+                    <li>✅ 地域医療連携ネットワークの構築</li>
+                </ul>
             </div>
         </div>
+        <div class="service-row" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-bottom: 0; gap: 50px;">
+            <div style="flex: 1; min-width: 300px; position: relative;">
+                <div style="position: absolute; top: -60px; left: -20px; font-size: 8rem; font-weight: 900; color: #f0f0f0; z-index: -1;">03</div>
+                <h3 style="font-size: 1.8rem; color: #1a2a3a; margin-bottom: 25px; font-weight: bold;">
+                    グローバル学術交流・技術移転
+                </h3>
+                <p style="color: #444; font-weight: bold; margin-bottom: 20px; font-size: 1.1rem;">
+                    日本と世界を繋ぐ、最先端技術の架け橋。
+                </p>
+                <p style="color: #666; line-height: 1.8; margin-bottom: 20px;">
+                    歯科医療の進歩に国境はありません。私たちは海外の大学や医療機関と提携し、国際的な学術交流会を主催しています。世界最先端のAI画像診断技術や、新しいインプラント治療法などを学ぶ機会を提供。日本の歯科医師がグローバルな視点で活躍できる環境を創造します。
+                </p>
+            </div>
+            <div style="flex: 1; min-width: 300px; background: #f8f9fa; padding: 50px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                <h4 style="margin-bottom: 20px; color: #1a2a3a; border-left: 4px solid #1a2a3a; padding-left: 15px; font-size: 1.2rem;">主な支援内容</h4>
+                <ul style="list-style: none; padding: 0; color: #555; line-height: 2.2;">
+                    <li>✅ 海外学術交流会・シンポジウムの企画運営</li>
+                    <li>✅ 海外先進クリニック視察・研修ツアー</li>
+                    <li>✅ 最先端医療機器・AI技術の導入サポート</li>
+                    <li>✅ 国際的な医師コミュニティへの参加支援</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="text-align: center; padding: 60px 5%;">
+        <h3 style="margin-bottom: 20px; color: #1a2a3a; font-size: 1.8rem;">歯科医院経営の「次の一手」をご提案します</h3>
+        <p style="margin-bottom: 40px; color: #666;">経営診断からAI導入、海外展開まで。まずはお気軽にご相談ください。</p>
+        <a href="index.html#contact" style="display: inline-block; padding: 18px 50px; background: #1a2a3a; color: #fff; text-decoration: none; border-radius: 50px; font-weight: bold; transition: all 0.3s; box-shadow: 0 5px 15px rgba(26, 42, 58, 0.2);">お問い合わせはこちら</a>
     </div>
 </main>
 
