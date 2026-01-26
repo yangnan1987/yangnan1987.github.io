@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>歯科関連事業 - NEW LIFE DEVELOPMENT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body, html { margin: 0; padding: 0; font-family: 'Noto Sans JP', sans-serif; color: #333; line-height: 1.8; scroll-behavior: smooth; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; padding: 0; margin: 0; }
+
+        /* 导航栏 */
+        header {
+            background-color: #1a2a3a;
+            color: white;
+            padding: 0 5%;
+            height: 80px;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .logo-box { text-align: left; line-height: 1.2; }
+        .company-name-ja { font-size: 1.2rem; font-weight: 700; }
+        .company-name-en { font-size: 0.75rem; letter-spacing: 1px; opacity: 0.8; }
+        
+        nav > ul { display: flex; gap: 0; height: 80px; align-items: center; }
+        nav > ul > li { position: relative; height: 100%; display: flex; align-items: center; }
+        nav > ul > li > a { font-size: 0.95rem; color: #ddd; padding: 0 20px; height: 100%; display: flex; align-items: center; transition: 0.3s; }
+        nav > ul > li:hover > a { color: white; background-color: rgba(255,255,255,0.05); }
+
+        .dropdown { display: none; position: absolute; top: 100%; left: 0; background-color: #1a2a3a; min-width: 260px; box-shadow: 0 8px 16px rgba(0,0,0,0.3); z-index: 3000; }
+        .dropdown li a { display: block; padding: 15px 20px; color: #ccc; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; }
+        .dropdown li a:hover { background-color: #2c3e50; color: white; padding-left: 25px; }
+        nav > ul > li:hover .dropdown { display: block; }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 5%; }
+
+        /* Footer */
+        footer { background: #1a2a3a; color: white; padding: 60px 10%; text-align: center; }
+        .footer-contact-title { font-size: 1.5rem; font-weight: bold; margin-bottom: 30px; }
+        .footer-info { line-height: 2; margin-bottom: 30px; }
+        .copyright { opacity: 0.6; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+
+        /* 移动端修正 */
+        @media (max-width: 768px) {
+            header { 
+                height: auto; 
+                flex-direction: column; 
+                padding: 10px 5%; 
+            }
+            .logo-box { 
+                text-align: center; 
+                margin-bottom: 10px; 
+            }
+            nav { 
+                width: 100%; 
+            }
+            nav > ul { 
+                height: auto; 
+                display: flex; 
+                flex-direction: row;
+                justify-content: center; 
+                flex-wrap: wrap; 
+                gap: 5px; 
+            }
+            nav > ul > li { 
+                height: auto; 
+            }
+            nav > ul > li > a { 
+                padding: 8px 12px; 
+                font-size: 0.85rem;
+            }
+            .dropdown { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-box">
+        <a href="index.html">
+            <div class="company-name-ja">ニューライフ開発株式会社</div>
+            <div class="company-name-en">NEW LIFE DEVELOPMENT CO., LTD.</div>
+        </a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">ホーム</a></li>
+            <li>
+                <a href="index.html#services">事業内容</a>
+                <ul class="dropdown">
+                    <li><a href="service-asset.html">資産管理コンサルティング</a></li>
+                    <li><a href="service-ma.html">ビジネスマッチング（M＆A）</a></li>
+                    <li><a href="service-beauty.html">医療美容サポート</a></li>
+                    <li><a href="service-trade.html">貿易支援事業</a></li>
+                    <li><a href="service-welfare.html">福祉関係事業</a></li>
+                    <li><a href="service-dental.html">歯科関連事業</a></li>
+                </ul>
+            </li>
+            <li><a href="news.html">NEWS</a></li>
+            <li><a href="index.html#contact">お問い合わせ</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <div class="page-header" style="background-color: #1a2a3a; padding: 60px 0; text-align: center; color: #fff;">
+        <div class="container">
+            <h1 style="font-size: 2.2rem; margin-bottom: 10px;">歯科関連事業</h1>
+            <p style="font-size: 1rem; opacity: 0.8;">Dental Business Solutions</p>
+        </div>
+    </div>
+    <div class="container" style="padding: 60px 0;">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto 60px;">
+            <h2 style="font-size: 1.8rem; color: #1a2a3a; margin-bottom: 20px;">歯科医療の未来を、経営と技術の両面からサポート</h2>
+            <p style="line-height: 1.8; color: #555;">
+                私たちは、歯科医院の経営最適化から、世界と繋がる学術交流まで、包括的なソリューションを提供します。<br>
+                現場の課題を解決し、歯科医師の皆様が「医療」に専念できる環境づくりに貢献します。
+            </p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+            <div class="service-box" style="padding: 30px; background: #f9f9fa; border-radius: 8px; border-top: 4px solid #1a2a3a;">
+                <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: #1a2a3a;">01. 経営コンサルティング</h3>
+                <p style="color: #666; line-height: 1.6;">
+                    経営不振に陥った医院の再生支援、収益構造の改善、そして新規開業の戦略立案まで。<br>
+                    データに基づいた客観的な分析を行い、スタッフ教育やオペレーション改善も含めた、持続可能な医院経営を実現します。
+                </p>
+            </div>
+            <div class="service-box" style="padding: 30px; background: #f9f9fa; border-radius: 8px; border-top: 4px solid #1a2a3a;">
+                <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: #1a2a3a;">02. 歯科ビジネス・プロデュース</h3>
+                <p style="color: #666; line-height: 1.6;">
+                    医院の「強み」を発掘し、新たな市場を開拓します。<br>
+                    自費診療のマーケティング、ブランディング構築、地域医療連携の推進など、攻めの姿勢で医院の成長を後押しするパートナーとなります。
+                </p>
+            </div>
+            <div class="service-box" style="padding: 30px; background: #f9f9fa; border-radius: 8px; border-top: 4px solid #1a2a3a;">
+                <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: #1a2a3a;">03. グローバル学術交流</h3>
+                <p style="color: #666; line-height: 1.6;">
+                    日本の歯科医師と海外の先進技術を繋ぐ架け橋となります。<br>
+                    海外学術交流会の企画・運営、現地視察ツアー、最先端技術の研修などを通じて、医療技術の国際的な発展と人的ネットワークの構築に貢献します。
+                </p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer id="contact">
+    <div class="footer-contact-title">お問い合わせ</div>
+    <div class="footer-info">
+        <h3>ニューライフ開発株式会社</h3>
+        <p>〒541-0057 大阪府大阪市中央区北久宝寺町3-6-1 本町南ガーデンシティ7階</p>
+        <p>Email: info@newlife-dev-group.com</p>
+    </div>
+    <div class="copyright">&copy; 2025 NEW LIFE DEVELOPMENT CO., LTD. All Rights Reserved.</div>
+</footer>
+
+</body>
+</html>
