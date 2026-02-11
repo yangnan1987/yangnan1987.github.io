@@ -255,7 +255,7 @@
         <button class="filter-btn active" data-filter="all">すべて</button>
         <button class="filter-btn" data-filter="internal">お知らせ</button>
         <button class="filter-btn" data-filter="external">ニュース</button>
-        <button class="filter-btn" data-filter="event">活動レポート</button>
+        <button class="filter-btn" data-filter="event">活動研究レポート</button>
     </div>
     <div id="home-news-container" class="news-list">加载中...</div>
     <div style="text-align: center;">
@@ -271,7 +271,7 @@
     function getTagClass(tag) {
         if (tag === 'お知らせ') return 'tag-internal';
         if (tag === 'ニュース') return 'tag-news';
-        if (tag === '活動レポート') return 'tag-event';
+        if (tag === '活動レポート' || tag === '研究レポート') return 'tag-event';
         return '';
     }
 
