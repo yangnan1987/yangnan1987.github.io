@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ニューライフ開発株式会社の公式サイト。資産管理コンサルティング、M&amp;A、貿易支援、福祉・歯科・医療美容など多岐にわたる事業を展開。大阪市中央区。">
+    <link rel="canonical" href="https://newlife-dev-group.com/">
     <title>NEW LIFE DEVELOPMENT CO., LTD.</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
@@ -289,7 +291,7 @@
         filteredData.slice(0, 5).forEach(item => {
             // 根据 type 判断链接方式（internal 和 event 都跳转详情页）
             const linkHref = (item.type === 'internal' || item.type === 'event')
-                ? `news-detail.html?id=${item.id}` 
+                ? `news/${item.id}.html` 
                 : (item.url || '#');
             const linkTarget = (item.type === 'internal' || item.type === 'event') ? '' : 'target="_blank"';
             const linkText = (item.type === 'internal' || item.type === 'event') ? '詳細を見る' : '記事を読む';
