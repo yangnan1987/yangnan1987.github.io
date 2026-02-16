@@ -1,0 +1,7 @@
+{
+  "name": "newlife-hp",
+  "private": true,
+  "scripts": {
+    "build": "node build-news-static.js"
+  }
+}
