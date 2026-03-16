@@ -46,6 +46,16 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://newlife-dev-group.com/news/n_20260316_1.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://newlife-dev-group.com/news/n_20260302_1.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://newlife-dev-group.com/news/n_20260212_1.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
