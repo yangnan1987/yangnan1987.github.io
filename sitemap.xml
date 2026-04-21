@@ -26,22 +26,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://newlife-dev-group.com/service-trade.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://newlife-dev-group.com/service-welfare.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://newlife-dev-group.com/service-dental.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://newlife-dev-group.com/service-beauty.html</loc>
+    <loc>https://newlife-dev-group.com/service-management.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

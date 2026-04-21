@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ニューライフ開発の経営サポート。業務の可視化・KPI設計・DX推進・AI活用まで、意思決定と実行をつなぐ伴走型支援。PropDD（不動産DD管理）の開発事例も掲載。">
+    <meta name="keywords" content="経営サポート,業務改善,DX,AI活用,KPI設計,要件定義,プロダクト開発,SaaS,大阪,ニューライフ開発">
+    <link rel="canonical" href="https://newlife-dev-group.com/service-management.html">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="経営サポート｜業務改善・DX・AI活用 - ニューライフ開発大阪">
+    <meta property="og:description" content="業務の可視化・KPI設計・DX推進・AI活用まで、意思決定と実行をつなぐ伴走型の経営サポート。PropDD（不動産DD管理）の開発事例も掲載。">
+    <meta property="og:url" content="https://newlife-dev-group.com/service-management.html">
+    <meta property="og:image" content="https://newlife-dev-group.com/hero-bg.jpg">
+    <meta property="og:site_name" content="ニューライフ開発株式会社">
+    <meta property="og:locale" content="ja_JP">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="経営サポート｜業務改善・DX・AI活用 - ニューライフ開発大阪">
+    <meta name="twitter:description" content="業務の可視化・KPI設計・DX推進・AI活用まで、意思決定と実行をつなぐ伴走型の経営サポート。">
+    <meta name="twitter:image" content="https://newlife-dev-group.com/hero-bg.jpg">
+    <title>経営サポート｜業務改善・DX・AI活用 - ニューライフ開発大阪</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body, html { margin: 0; padding: 0; font-family: 'Noto Sans JP', sans-serif; color: #333; line-height: 1.8; scroll-behavior: smooth; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; padding: 0; margin: 0; }
+
+        header {
+            background-color: #1a2a3a;
+            color: white;
+            padding: 0 5%;
+            height: 80px;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .logo-box { text-align: left; line-height: 1.2; }
+        .company-name-ja { font-size: 1.2rem; font-weight: 700; }
+        .company-name-en { font-size: 0.75rem; letter-spacing: 1px; opacity: 0.8; }
+
+        nav > ul { display: flex; gap: 0; height: 80px; align-items: center; }
+        nav > ul > li { position: relative; height: 100%; display: flex; align-items: center; }
+        nav > ul > li > a { font-size: 0.95rem; color: #ddd; padding: 0 20px; height: 100%; display: flex; align-items: center; transition: 0.3s; }
+        nav > ul > li:hover > a { color: white; background-color: rgba(255,255,255,0.05); }
+
+        .dropdown { display: none; position: absolute; top: 100%; left: 0; background-color: #1a2a3a; min-width: 260px; box-shadow: 0 8px 16px rgba(0,0,0,0.3); z-index: 3000; }
+        .dropdown li a { display: block; padding: 15px 20px; color: #ccc; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; }
+        .dropdown li a:hover { background-color: #2c3e50; color: white; padding-left: 25px; }
+        nav > ul > li:hover .dropdown { display: block; }
+
+        .sub-hero {
+            height: 420px;
+            background: linear-gradient(rgba(26, 42, 58, 0.72), rgba(26, 42, 58, 0.72)), url('hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 0 5%;
+        }
+        .sub-hero h1 { font-size: 2.4rem; font-weight: 700; letter-spacing: 2px; text-shadow: 0 2px 10px rgba(0,0,0,0.3); margin: 0; }
+        .sub-hero p { margin: 12px 0 0; opacity: 0.9; letter-spacing: 1px; }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 80px 5%; }
+        .lead-text { font-size: 1.2rem; border-left: 4px solid #1a2a3a; padding-left: 20px; margin-bottom: 60px; text-align: justify; color: #444; }
+
+        .service-detail-item { margin-bottom: 40px; background: #fff; padding: 34px; border-radius: 10px; border: 1px solid #eee; box-shadow: 0 6px 18px rgba(0,0,0,0.04); }
+        .service-detail-item h2 { color: #1a2a3a; font-size: 1.35rem; margin-top: 0; display: flex; align-items: center; }
+        .service-detail-item h2::before { content: "■"; margin-right: 14px; color: #1a2a3a; font-size: 1rem; opacity: 0.9; }
+        .service-detail-item p { color: #555; margin: 0.6em 0 0; }
+        .pill-list { margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap; }
+        .pill { display: inline-block; padding: 6px 12px; border-radius: 999px; background: #f4f6f8; border: 1px solid #e7eaee; color: #444; font-size: 0.85rem; }
+
+        .case-box { background: #f9f9f9; border: 1px solid #eee; padding: 34px; border-radius: 10px; }
+        .case-box h3 { margin: 0 0 14px; color: #1a2a3a; font-size: 1.3rem; }
+        .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 18px; }
+        .case-card { background: #fff; border: 1px solid #eee; border-radius: 10px; padding: 22px; }
+        .case-card h4 { margin: 0 0 10px; color: #1a2a3a; }
+        .case-card ul { padding-left: 1.2em; list-style: disc; color: #555; line-height: 2; margin: 0; }
+
+        .cta { text-align: center; margin-top: 60px; }
+        .btn { display: inline-block; padding: 15px 44px; background: #1a2a3a; color: white; border-radius: 30px; transition: 0.3s; box-shadow: 0 10px 24px rgba(26, 42, 58, 0.18); }
+        .btn:hover { background: #2c3e50; transform: translateY(-3px); }
+
+        footer { background: #1a2a3a; color: white; padding: 60px 10%; text-align: center; }
+        .footer-contact-title { font-size: 1.5rem; font-weight: bold; margin-bottom: 30px; }
+        .footer-info { line-height: 2; margin-bottom: 30px; }
+        .copyright { opacity: 0.6; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+
+        @media (max-width: 900px) {
+            .case-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            header { height: auto; flex-direction: column; padding: 10px 5%; }
+            .logo-box { text-align: center; margin-bottom: 10px; }
+            nav { width: 100%; }
+            nav > ul { height: auto; display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap; gap: 5px; }
+            nav > ul > li { height: auto; }
+            nav > ul > li > a { padding: 8px 12px; font-size: 0.85rem; }
+            .dropdown { display: none !important; }
+
+            .sub-hero { height: 360px; }
+            .sub-hero h1 { font-size: 1.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-box">
+        <a href="index.html">
+            <div class="company-name-ja">ニューライフ開発株式会社</div>
+            <div class="company-name-en">NEW LIFE DEVELOPMENT CO., LTD.</div>
+        </a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">ホーム</a></li>
+            <li>
+                <a href="index.html#services">事業内容 ▾</a>
+                <ul class="dropdown">
+                    <li><a href="service-asset.html">資産管理コンサルティング</a></li>
+                    <li><a href="service-ma.html">ビジネスマッチング（M＆A）</a></li>
+                    <li><a href="service-management.html">経営サポート</a></li>
+                    <li><a href="service-dental.html">歯科関連事業</a></li>
+                </ul>
+            </li>
+            <li><a href="news.html">NEWS</a></li>
+            <li><a href="index.html#contact">お問い合わせ</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="sub-hero">
+    <div>
+        <h1>経営サポート</h1>
+        <p>業務改善 / DX / AI活用 / 伴走型プロダクト支援</p>
+    </div>
+</div>
+
+<div class="container">
+    <p class="lead-text">
+        「やりたいこと」はあるのに、現場は忙しく、情報は分断され、意思決定が遅れる——。
+        私たちは、経営の意思決定と現場の実行をつなぐために、業務の可視化からKPI設計、DX推進、AI活用までを一気通貫で支援します。
+        単発の提案ではなく、成果が出るところまで<strong style="color:#1a2a3a;">伴走</strong>するのが私たちのスタイルです。
+    </p>
+
+    <div class="service-detail-item">
+        <h2>業務の可視化・課題整理（現場から設計する）</h2>
+        <p>属人化した業務や、二重入力・手戻りの原因を棚卸しし、改善優先度と実行ロードマップを明確化します。</p>
+        <div class="pill-list">
+            <span class="pill">業務フロー整理</span>
+            <span class="pill">権限/役割設計</span>
+            <span class="pill">KPI/指標の定義</span>
+            <span class="pill">課題の定量化</span>
+        </div>
+    </div>
+
+    <div class="service-detail-item">
+        <h2>DX推進（最小で始め、確実に広げる）</h2>
+        <p>まずは現場の負担を減らす“小さな改善”から着手し、運用に乗せながら段階的に全体最適へ拡張します。</p>
+        <div class="pill-list">
+            <span class="pill">要件定義/PoC</span>
+            <span class="pill">ダッシュボード化</span>
+            <span class="pill">ワークフロー整備</span>
+            <span class="pill">データ統合</span>
+        </div>
+    </div>
+
+    <div class="service-detail-item">
+        <h2>AI活用（判断の質とスピードを上げる）</h2>
+        <p>社内ナレッジの検索性向上、文章作成の標準化、チェックの自動化など、実務で効くユースケースに絞って導入します。</p>
+        <div class="pill-list">
+            <span class="pill">ナレッジ検索</span>
+            <span class="pill">チェック自動化</span>
+            <span class="pill">文書生成の標準化</span>
+            <span class="pill">業務アシスタント</span>
+        </div>
+    </div>
+
+    <div class="service-detail-item case-box">
+        <h3>開発事例：PropDD（不動産DD管理プロジェクト）</h3>
+        <p style="color:#555; margin: 0;">
+            私たちが最近開発した <strong style="color:#1a2a3a;">PropDD</strong> は、不動産デューデリジェンス（DD）に関わる情報・タスク・証跡を一元管理し、関係者間の意思決定を高速化するための業務システムです。
+            「案件が増えるほど確認漏れが増える」「資料が散在して判断が遅れる」といった現場課題に対し、プロセス設計から機能実装までをセットで推進しました。
+        </p>
+        <div class="case-grid">
+            <div class="case-card">
+                <h4>解決したい課題</h4>
+                <ul>
+                    <li>案件ごとの資料がバラバラで、最新版管理が難しい</li>
+                    <li>チェック観点が属人化し、抜け漏れが起きる</li>
+                    <li>関係者間の進捗共有が遅れ、判断が後ろ倒しになる</li>
+                </ul>
+            </div>
+            <div class="case-card">
+                <h4>提供した仕組み（例）</h4>
+                <ul>
+                    <li>案件単位のタスク/資料/コメントの集約</li>
+                    <li>チェックリストとステータス管理による標準化</li>
+                    <li>要点サマリーの自動生成（レビュー効率化）</li>
+                    <li>権限設計による安全な共有と監査性</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta">
+        <a href="index.html#contact" class="btn">無料相談はこちら</a>
+    </div>
+</div>
+
+<footer id="contact">
+    <div class="footer-contact-title">お問い合わせ</div>
+    <div class="footer-info">
+        <h3>ニューライフ開発株式会社</h3>
+        <p>〒541-0057 大阪府大阪市中央区北久宝寺町3-6-1 本町南ガーデンシティ7階</p>
+        <p>Email: info@newlife-dev-group.com</p>
+    </div>
+    <div class="copyright">&copy; 2025 NEW LIFE DEVELOPMENT CO., LTD. All Rights Reserved.</div>
+</footer>
+
+</body>
+</html>
+

@@ -65,10 +65,8 @@ for (const item of items) {
     .replace(/href="news\.html"/g, 'href="../news.html"')
     .replace(/href="service-asset\.html"/g, 'href="../service-asset.html"')
     .replace(/href="service-ma\.html"/g, 'href="../service-ma.html"')
-    .replace(/href="service-trade\.html"/g, 'href="../service-trade.html"')
-    .replace(/href="service-welfare\.html"/g, 'href="../service-welfare.html"')
     .replace(/href="service-dental\.html"/g, 'href="../service-dental.html"')
-    .replace(/href="service-beauty\.html"/g, 'href="../service-beauty.html"')
+    .replace(/href="service-management\.html"/g, 'href="../service-management.html"')
     .replace(/href="index\.html#contact"/g, 'href="../index.html#contact"');
 
   const containerStart = '<div class="container">';
@@ -113,10 +111,8 @@ const fixedUrls = [
   { loc: `${BASE}/news.html`, changefreq: 'weekly', priority: '0.9' },
   { loc: `${BASE}/service-asset.html`, changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE}/service-ma.html`, changefreq: 'monthly', priority: '0.8' },
-  { loc: `${BASE}/service-trade.html`, changefreq: 'monthly', priority: '0.8' },
-  { loc: `${BASE}/service-welfare.html`, changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE}/service-dental.html`, changefreq: 'monthly', priority: '0.8' },
-  { loc: `${BASE}/service-beauty.html`, changefreq: 'monthly', priority: '0.8' },
+  { loc: `${BASE}/service-management.html`, changefreq: 'monthly', priority: '0.8' },
 ];
 const newsUrls = items.map((item) => ({
   loc: `${BASE}/news/${item.id}.html`,
