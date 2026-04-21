@@ -51,6 +51,9 @@ for (const item of items) {
 
   let html = template
     .replace('<title>NEWS 詳細 - NEW LIFE DEVELOPMENT</title>', `<title>${escapeHtml(title)} - NEW LIFE DEVELOPMENT</title>`)
+    // template 侧可能已有 description/canonical（用于动态详情页去重），静态页需要覆盖为本页
+    .replace(/\s*<meta\s+name="description"[^>]*>\s*/g, '\n    ')
+    .replace(/\s*<link\s+rel="canonical"[^>]*>\s*/g, '\n    ')
     .replace(
       '<meta name="viewport" content="width=device-width, initial-scale=1.0">',
       `<meta name="description" content="${escapeHtml(desc)}">\n    <link rel="canonical" href="https://newlife-dev-group.com/news/${id}.html">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">`
