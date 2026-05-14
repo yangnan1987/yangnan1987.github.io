@@ -234,14 +234,27 @@
         return '';
     }
 
+    /** ニュース欄：外部リンク＋ tag がニュースの站内稿（type は event のまま） */
+    function matchesNewsTab(item) {
+        return item.type === 'external' || (item.type === 'event' && item.tag === 'ニュース');
+    }
+    /** 活動研究レポート欄：站内レポートのうち tag がニュース以外 */
+    function matchesReportTab(item) {
+        return item.type === 'event' && item.tag !== 'ニュース';
+    }
+
     // 渲染新闻列表
     function renderNews(filter = 'all') {
         const container = document.getElementById('full-news-list');
         container.innerHTML = '';
         
         let filteredData = allNewsData;
-        if (filter !== 'all') {
-            filteredData = allNewsData.filter(item => item.type === filter);
+        if (filter === 'internal') {
+            filteredData = allNewsData.filter(item => item.type === 'internal');
+        } else if (filter === 'external') {
+            filteredData = allNewsData.filter(matchesNewsTab);
+        } else if (filter === 'event') {
+            filteredData = allNewsData.filter(matchesReportTab);
         }
         
         // 显示所有筛选后的新闻（列表页显示全部）
