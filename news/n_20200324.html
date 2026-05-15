@@ -75,12 +75,15 @@
         }
 
         .news-detail-tag {
-            background: #1a2a3a;
+            background-color: #1a2a3a; /* fallback */
             color: white;
             padding: 4px 12px;
             font-size: 0.75rem;
             border-radius: 2px;
         }
+        .news-detail-tag.tag-internal { background-color: #1a2a3a; }
+        .news-detail-tag.tag-news { background-color: #7f8c8d; }
+        .news-detail-tag.tag-event { background-color: #e67e22; }
 
         .news-detail-image {
             width: 100%;
@@ -346,7 +349,7 @@
         <h1 class="news-detail-title">本社移転のお知らせ</h1>
         <div class="news-detail-meta">
             <span class="news-detail-date">2020.3.24</span>
-            <span class="news-detail-tag">お知らせ</span>
+            <span class="news-detail-tag tag-internal">お知らせ</span>
         </div>
     </div>
     <div class="news-detail-content"><div class="article-body"><p>平素は格別のご高配を賜り厚く御礼申し上げます。</p><p>さて、この度弊社は、2020年（令和2年）3月24日より下記住所へ移転いたしましたのでお知らせ申し上げます。</p><p>これを機に社員一同、より一層業務に精励いたす所存ですので、何卒倍旧のご支援ご鞭撻を賜りますようお願い申し上げます。</p><hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;"><div style="background: #f9f9fa; padding: 20px; border-radius: 8px;"><h4 style="margin-top: 0; color: #1a2a3a;">【新住所】</h4><p style="margin-bottom: 15px; font-weight: bold;">〒541-0057<br>大阪市中央区北久宝寺町三丁目6番1号 7F</p><h4 style="margin-top: 0; color: #666; font-size: 0.9rem;">【旧住所】</h4><p style="color: #666; margin-bottom: 0;">〒542-0081<br>大阪市中央区南船場三丁目12番21号 4F</p></div></div></div>

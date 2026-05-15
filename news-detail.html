@@ -75,12 +75,15 @@
         }
 
         .news-detail-tag {
-            background: #1a2a3a;
+            background-color: #1a2a3a; /* fallback */
             color: white;
             padding: 4px 12px;
             font-size: 0.75rem;
             border-radius: 2px;
         }
+        .news-detail-tag.tag-internal { background-color: #1a2a3a; }
+        .news-detail-tag.tag-news { background-color: #7f8c8d; }
+        .news-detail-tag.tag-event { background-color: #e67e22; }
 
         .news-detail-image {
             width: 100%;
@@ -376,12 +379,19 @@
                 }
 
                 // 构建新闻详情HTML
+                function getTagClass(tag) {
+                    if (tag === 'お知らせ') return 'tag-internal';
+                    if (tag === 'ニュース') return 'tag-news';
+                    if (tag === '活動レポート' || tag === '研究レポート') return 'tag-event';
+                    return '';
+                }
+                const tagClass = getTagClass(newsItem.tag);
                 let html = `
                     <div class="news-detail-header">
                         <h1 class="news-detail-title">${newsItem.title}</h1>
                         <div class="news-detail-meta">
                             <span class="news-detail-date">${newsItem.date}</span>
-                            <span class="news-detail-tag">${newsItem.tag}</span>
+                            <span class="news-detail-tag ${tagClass}">${newsItem.tag}</span>
                         </div>
                     </div>
                 `;
