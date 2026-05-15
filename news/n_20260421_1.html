@@ -99,20 +99,132 @@
             border-radius: 4px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             line-height: 2;
+            overflow-x: visible;
         }
 
-        /* 横長インフォグラフィック等：本文枠いっぱいに表示 */
-        .news-detail-content .life-tree-block figure {
-            margin: 0;
-            padding: 8px 4px 4px;
-            text-align: center;
-            background: #fafafa;
+        /* ライフツリー：図を画面幅いっぱいに近づけて大きく、要約は下段で読みやすく */
+        .news-detail-content .life-tree-block {
+            margin: 36px 0 48px;
         }
-        .news-detail-content .life-tree-block figure img {
+        .news-detail-content .life-tree-zoom-hint {
+            text-align: center;
+            font-size: 0.88rem;
+            color: #555;
+            margin: 0 0 14px;
+            line-height: 1.7;
+        }
+        .news-detail-content .life-tree-bleed {
+            width: 100vw;
+            max-width: 100vw;
+            margin-left: calc(50% - 50vw);
+            margin-right: calc(50% - 50vw);
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #f0f3f6;
+            border-top: 1px solid #dde3e8;
+            border-bottom: 1px solid #dde3e8;
+            padding: 18px 0 22px;
+            box-sizing: border-box;
+        }
+        .news-detail-content .life-tree-visual-inner {
+            max-width: min(1680px, 96vw);
+            margin: 0 auto;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+        .news-detail-content .life-tree-zoom-hit {
+            display: block;
             width: 100%;
-            max-width: 100%;
+            padding: 0;
+            margin: 0;
+            border: none;
+            background: #fff;
+            cursor: zoom-in;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            line-height: 0;
+            box-shadow: 0 2px 14px rgba(0,0,0,0.08);
+        }
+        .news-detail-content .life-tree-zoom-hit:focus {
+            outline: 3px solid #1a6b8a;
+            outline-offset: 2px;
+        }
+        .news-detail-content .life-tree-zoom-hit img {
+            width: 100%;
             height: auto;
-            vertical-align: middle;
+            display: block;
+            vertical-align: top;
+            image-rendering: auto;
+        }
+        .news-detail-content .life-tree-zoom-badge {
+            position: absolute;
+            bottom: 14px;
+            right: 14px;
+            font-size: 0.78rem;
+            letter-spacing: 0.05em;
+            padding: 7px 14px;
+            background: rgba(26, 42, 58, 0.9);
+            color: #fff;
+            border-radius: 4px;
+            pointer-events: none;
+            line-height: 1.3;
+        }
+        .news-detail-content .life-tree-prose {
+            max-width: 720px;
+            margin: 28px auto 0;
+            padding: 0 6px;
+        }
+
+        /* 画像ライトボックス（同一ページ内、別タブなし） */
+        .article-img-lightbox[hidden] {
+            display: none !important;
+        }
+        .article-img-lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 6000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+            box-sizing: border-box;
+            background: rgba(0, 0, 0, 0.9);
+            cursor: zoom-out;
+        }
+        .article-img-lightbox__img {
+            max-width: min(98vw, 2200px);
+            max-height: min(94vh, 2200px);
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            cursor: default;
+            image-rendering: auto;
+        }
+        .article-img-lightbox__close {
+            position: fixed;
+            top: max(12px, env(safe-area-inset-top));
+            right: max(16px, env(safe-area-inset-right));
+            z-index: 6001;
+            width: 44px;
+            height: 44px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            font-size: 1.6rem;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .article-img-lightbox__close:hover {
+            background: rgba(255, 255, 255, 0.28);
         }
 
         .news-detail-content p {
@@ -254,6 +366,71 @@
     </div>
 </div>
 
+
+<div id="article-img-lightbox" class="article-img-lightbox" hidden role="dialog" aria-modal="true" aria-label="画像の拡大表示">
+    <button type="button" class="article-img-lightbox__close" aria-label="閉じる">&times;</button>
+    <img class="article-img-lightbox__img" src="" alt="">
+</div>
+
+<script>
+(function () {
+    var lb = document.getElementById('article-img-lightbox');
+    if (!lb) return;
+    var lbImg = lb.querySelector('.article-img-lightbox__img');
+    var closeBtn = lb.querySelector('.article-img-lightbox__close');
+    function closeLb() {
+        lb.setAttribute('hidden', '');
+        lb.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        lbImg.removeAttribute('src');
+        lbImg.alt = '';
+    }
+    function openLb(src, alt) {
+        if (!src) return;
+        lbImg.src = src;
+        lbImg.alt = alt || '';
+        lb.removeAttribute('hidden');
+        lb.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+    document.addEventListener('click', function (e) {
+        var trigger = e.target.closest('.js-article-lightbox-trigger');
+        if (!trigger) return;
+        e.preventDefault();
+        var src = trigger.getAttribute('data-lightbox-src');
+        var alt = trigger.getAttribute('data-lightbox-alt') || '';
+        if (!src) {
+            var innerImg = trigger.querySelector('img');
+            if (innerImg) src = innerImg.getAttribute('src');
+            if (innerImg && !alt) alt = innerImg.getAttribute('alt') || '';
+        }
+        openLb(src, alt);
+    });
+    lb.addEventListener('click', function (e) {
+        if (e.target === lbImg) return;
+        closeLb();
+    });
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            closeLb();
+        });
+    }
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !lb.hasAttribute('hidden')) closeLb();
+    });
+})();
+</script>
+
+<footer id="contact">
+    <div class="footer-contact-title">お問い合わせ</div>
+    <div class="footer-info">
+        <h3>ニューライフ開発株式会社</h3>
+        <p>〒541-0057 大阪府大阪市中央区北久宝寺町3-6-1 本町南ガーデンシティ7階</p>
+        <p>Email: info@newlife-dev-group.com</p>
+    </div>
+    <div class="copyright">&copy; 2025 NEW LIFE DEVELOPMENT CO., LTD. All Rights Reserved.</div>
+</footer>
 
 </body>
 </html>

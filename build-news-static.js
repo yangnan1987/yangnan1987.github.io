@@ -38,7 +38,9 @@ for (const item of items) {
   const id = item.id;
   const title = item.title || '';
   const desc = stripHtml(item.content) || title;
-  const contentHtml = (item.content || '').replace(/src="images\//g, 'src="../images/');
+  const contentHtml = (item.content || '')
+    .replace(/src="images\//g, 'src="../images/')
+    .replace(/data-lightbox-src="images\//g, 'data-lightbox-src="../images/');
   const innerHtml = `
     <div class="news-detail-header">
         <h1 class="news-detail-title">${escapeHtml(title)}</h1>
@@ -91,11 +93,21 @@ ${innerHtml}
 `;
   html = before + newBlock + after;
 
-  // 移除原来的 script 块（在 newBlock 之后、footer 之前可能还有 script）
-  const scriptStart = html.indexOf('<script>', html.indexOf('</div>'));
-  if (scriptStart !== -1) {
-    const end = html.indexOf('</script>', scriptStart) + '</script>'.length;
-    html = html.slice(0, scriptStart) + html.slice(end);
+  // 仅移除「?id=」动态加载 news-data 的第一段 script，保留 lightbox 等同页脚本与页脚
+  const dynamicMarker = "urlParams.get('id')";
+  let searchPos = 0;
+  while (true) {
+    const s = html.indexOf('<script>', searchPos);
+    if (s === -1) break;
+    const e = html.indexOf('</script>', s);
+    if (e === -1) break;
+    const blockEnd = e + '</script>'.length;
+    const block = html.slice(s, blockEnd);
+    if (block.includes(dynamicMarker)) {
+      html = html.slice(0, s) + html.slice(blockEnd);
+      break;
+    }
+    searchPos = s + 1;
   }
 
   const outPath = path.join(NEWS_DIR, `${id}.html`);
