@@ -40,7 +40,7 @@
         nav > ul > li:hover .dropdown { display: block; }
 
         .container { 
-            max-width: 1000px; 
+            max-width: 1140px; 
             margin: 60px auto; 
             padding: 0 5%; 
             min-height: 60vh; 
@@ -92,13 +92,27 @@
         }
 
         .news-detail-content {
-            max-width: 800px;
+            max-width: 1080px;
             margin: 40px auto;
             padding: 30px;
             background: white;
             border-radius: 4px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             line-height: 2;
+        }
+
+        /* 横長インフォグラフィック等：本文枠いっぱいに表示 */
+        .news-detail-content .life-tree-block figure {
+            margin: 0;
+            padding: 8px 4px 4px;
+            text-align: center;
+            background: #fafafa;
+        }
+        .news-detail-content .life-tree-block figure img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            vertical-align: middle;
         }
 
         .news-detail-content p {
