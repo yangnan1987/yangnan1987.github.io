@@ -34,10 +34,18 @@ const template = fs.readFileSync(TEMPLATE_PATH, 'utf8');
 
 const items = data.filter((item) => item.type === 'internal' || item.type === 'event');
 
+function getTagClass(tag) {
+  if (tag === 'お知らせ') return 'tag-internal';
+  if (tag === 'ニュース') return 'tag-news';
+  if (tag === '活動レポート' || tag === '研究レポート') return 'tag-event';
+  return '';
+}
+
 for (const item of items) {
   const id = item.id;
   const title = item.title || '';
   const desc = stripHtml(item.content) || title;
+  const tagClass = getTagClass(item.tag);
   const contentHtml = (item.content || '')
     .replace(/src="images\//g, 'src="../images/')
     .replace(/data-lightbox-src="images\//g, 'data-lightbox-src="../images/');
@@ -46,7 +54,7 @@ for (const item of items) {
         <h1 class="news-detail-title">${escapeHtml(title)}</h1>
         <div class="news-detail-meta">
             <span class="news-detail-date">${escapeHtml(item.date)}</span>
-            <span class="news-detail-tag">${escapeHtml(item.tag)}</span>
+            <span class="news-detail-tag ${tagClass}">${escapeHtml(item.tag)}</span>
         </div>
     </div>
     <div class="news-detail-content">${contentHtml}</div>`;
