@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="「人生如戏（人生はドラマである）」という言葉があるように、私たちの人生や会社の経営は、まさに予測不可能な展開の連続です。今回は、日々の様々な「トラブル」とどう向き合うべきかについて、社長の感悟をお届けします。 1. ドラマ＝トラブル（Drama = Trouble） 映画やドラマがなぜ面白いのかを考えてみてください。も">
+    <link rel="canonical" href="https://newlife-dev-group.com/news/n_20260526_1.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【社長コラム】ドラマはトラブルから生まれる —— 人生と経営における「問題解決」の旅 - NEW LIFE DEVELOPMENT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body, html { margin: 0; padding: 0; font-family: 'Noto Sans JP', sans-serif; color: #333; line-height: 1.8; scroll-behavior: smooth; background: #fbfbfb; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; padding: 0; margin: 0; }
+
+        header {
+            background-color: #1a2a3a;
+            color: white;
+            padding: 0 5%;
+            height: 80px;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .logo-box { text-align: left; line-height: 1.2; }
+        .company-name-ja { font-size: 1.2rem; font-weight: 700; }
+        .company-name-en { font-size: 0.75rem; letter-spacing: 1px; opacity: 0.8; }
+        
+        nav > ul { display: flex; gap: 0; height: 80px; align-items: center; }
+        nav > ul > li { position: relative; height: 100%; display: flex; align-items: center; }
+        nav > ul > li > a { font-size: 0.95rem; color: #ddd; padding: 0 20px; height: 100%; display: flex; align-items: center; transition: 0.3s; }
+        nav > ul > li:hover > a { color: white; background-color: rgba(255,255,255,0.05); }
+
+        .dropdown { display: none; position: absolute; top: 100%; left: 0; background-color: #1a2a3a; min-width: 260px; box-shadow: 0 8px 16px rgba(0,0,0,0.3); z-index: 3000; }
+        .dropdown li a { display: block; padding: 15px 20px; color: #ccc; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; }
+        .dropdown li a:hover { background-color: #2c3e50; color: white; padding-left: 25px; }
+        nav > ul > li:hover .dropdown { display: block; }
+
+        .container { 
+            max-width: 1140px; 
+            margin: 60px auto; 
+            padding: 0 5%; 
+            min-height: 60vh; 
+        }
+
+        .news-detail-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #1a2a3a;
+        }
+
+        .news-detail-title {
+            font-size: 2rem;
+            color: #1a2a3a;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .news-detail-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .news-detail-date {
+            color: #888;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .news-detail-tag {
+            background-color: #1a2a3a; /* fallback */
+            color: white;
+            padding: 4px 12px;
+            font-size: 0.75rem;
+            border-radius: 2px;
+        }
+        .news-detail-tag.tag-internal { background-color: #1a2a3a; }
+        .news-detail-tag.tag-news { background-color: #7f8c8d; }
+        .news-detail-tag.tag-event { background-color: #e67e22; }
+
+        .news-detail-image {
+            width: 100%;
+            max-width: 800px;
+            margin: 30px auto;
+            display: block;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .news-detail-content {
+            max-width: 1080px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            line-height: 2;
+            overflow-x: visible;
+        }
+
+        /* ライフツリー：図を画面幅いっぱいに近づけて大きく、要約は下段で読みやすく */
+        .news-detail-content .life-tree-block {
+            margin: 36px 0 48px;
+        }
+        .news-detail-content .life-tree-bleed {
+            width: 100%;
+            max-width: 100%;
+            position: relative;
+            background: #f0f3f6;
+            border-top: 1px solid #dde3e8;
+            border-bottom: 1px solid #dde3e8;
+            padding: 18px 0 22px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .news-detail-content .life-tree-visual-inner {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .news-detail-content .life-tree-zoom-hit {
+            display: inline-block;
+            max-width: 100%;
+            padding: 0;
+            margin: 0 auto;
+            border: none;
+            background: #fff;
+            cursor: zoom-in;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            line-height: 0;
+            box-shadow: 0 2px 14px rgba(0,0,0,0.08);
+        }
+        .news-detail-content .life-tree-zoom-hit:focus {
+            outline: 3px solid #1a6b8a;
+            outline-offset: 2px;
+        }
+        .news-detail-content .life-tree-zoom-hit img {
+            width: 100%;
+            height: auto;
+            display: block;
+            vertical-align: top;
+            image-rendering: auto;
+        }
+        .news-detail-content .life-tree-zoom-badge {
+            position: absolute;
+            bottom: 14px;
+            right: 14px;
+            font-size: 0.78rem;
+            letter-spacing: 0.05em;
+            padding: 7px 14px;
+            background: rgba(26, 42, 58, 0.9);
+            color: #fff;
+            border-radius: 4px;
+            pointer-events: none;
+            line-height: 1.3;
+        }
+        .news-detail-content .life-tree-prose {
+            max-width: 720px;
+            margin: 28px auto 0;
+            padding: 0 6px;
+        }
+
+        /* 画像ライトボックス（同一ページ内、別タブなし） */
+        .article-img-lightbox[hidden] {
+            display: none !important;
+        }
+        .article-img-lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 6000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+            box-sizing: border-box;
+            background: rgba(0, 0, 0, 0.9);
+            cursor: zoom-out;
+        }
+        .article-img-lightbox__img {
+            max-width: min(98vw, 2200px);
+            max-height: min(94vh, 2200px);
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            cursor: default;
+            image-rendering: auto;
+        }
+        .article-img-lightbox__close {
+            position: fixed;
+            top: max(12px, env(safe-area-inset-top));
+            right: max(16px, env(safe-area-inset-right));
+            z-index: 6001;
+            width: 44px;
+            height: 44px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            font-size: 1.6rem;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .article-img-lightbox__close:hover {
+            background: rgba(255, 255, 255, 0.28);
+        }
+
+        .news-detail-content p {
+            margin-bottom: 20px;
+        }
+
+        .error-message {
+            text-align: center;
+            padding: 60px 20px;
+            color: #888;
+            font-size: 1.1rem;
+        }
+
+        .back-home {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 40px;
+            background: #1a2a3a;
+            color: white;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #34495e;
+        }
+
+        footer {
+            background: #1a2a3a;
+            color: white;
+            padding: 60px 10%;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .footer-contact-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .footer-info {
+            line-height: 2;
+            margin-bottom: 30px;
+        }
+
+        .copyright {
+            opacity: 0.6;
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            header { 
+                height: auto; 
+                flex-direction: column; 
+                padding: 10px 5%; 
+            }
+            .logo-box { 
+                text-align: center; 
+                margin-bottom: 10px; 
+            }
+            nav { 
+                width: 100%; 
+            }
+            nav > ul { 
+                height: auto; 
+                display: flex; 
+                flex-direction: row; 
+                justify-content: center; 
+                flex-wrap: wrap; 
+                gap: 5px; 
+            }
+            nav > ul > li { 
+                height: auto; 
+            }
+            nav > ul > li > a { 
+                padding: 8px 12px; 
+                font-size: 0.85rem; 
+            }
+            .dropdown { display: none !important; }
+
+            .news-detail-title {
+                font-size: 1.5rem;
+            }
+
+            .news-detail-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-box">
+        <a href="../index.html">
+            <div class="company-name-ja">ニューライフ開発株式会社</div>
+            <div class="company-name-en">NEW LIFE DEVELOPMENT CO., LTD.</div>
+        </a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="../index.html">ホーム</a></li>
+            <li>
+                <a href="index.html#services">事業内容</a>
+                <ul class="dropdown">
+                    <li><a href="../service-asset.html">資産管理コンサルティング</a></li>
+                    <li><a href="../service-ma.html">ビジネスマッチング（M＆A）</a></li>
+                    <li><a href="../service-dental.html">歯科医療ビジネスソリューション</a></li>
+                    <li><a href="../service-management.html">経営サポート</a></li>
+                </ul>
+            </li>
+            <li><a href="../service-management.html#case-studies">開発事例</a></li>
+            <li><a href="../news.html">NEWS</a></li>
+            <li><a href="../index.html#contact">お問い合わせ</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+    <div id="news-detail-container">
+
+    <div class="news-detail-header">
+        <h1 class="news-detail-title">【社長コラム】ドラマはトラブルから生まれる —— 人生と経営における「問題解決」の旅</h1>
+        <div class="news-detail-meta">
+            <span class="news-detail-date">2026.5.26</span>
+            <span class="news-detail-tag ">コラム</span>
+        </div>
+    </div>
+    <div class="news-detail-content"><div class="article-lead" style="font-weight: bold; color: #555; margin-bottom: 30px; padding: 15px; background: #f9f9f9; border-left: 5px solid #1a2a3a;">「人生如戏（人生はドラマである）」という言葉があるように、私たちの人生や会社の経営は、まさに予測不可能な展開の連続です。今回は、日々の様々な「トラブル」とどう向き合うべきかについて、社長の感悟をお届けします。</div><figure style="text-align: center; margin: 30px 0;"><img src="../images/column-20260526.png" alt="人生と経営における「問題解決」の旅" style="max-width: 100%; height: auto; border: 1px solid #ddd; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"></figure><h3>1. ドラマ＝トラブル（Drama = Trouble）</h3><p>映画やドラマがなぜ面白いのかを考えてみてください。もし主人公が何の困難もなく、順風満帆に目的を達成してしまったら、その物語は退屈なものになってしまうでしょう。物語の起伏、すなわち「ドラマ」を生み出すのは、いつだって目の前に立ちはだかる「トラブル」です。</p><p>中国の古語に<strong>「無巧不成書（偶然がなければ物語は生まれない）」</strong>という言葉があります。思いがけない困難や、一見すると不都合な出来事こそが、その後の展開を劇的で豊かなものにするスパイスなのです。</p><h3>2. 人生も経営も「問題解決」の連続である</h3><p>会社経営も全く同じです。順調に見える時でも、水面下では常に何らかのトラブルが発生しています。そして、経営とは本質的に<strong>「次々と現れる問題を解決していくプロセス」</strong>に他なりません。</p><p>人生においても、トラブルのない平坦な道は存在しません。人は一生を通じて、大小さまざまな問題に向き合い、悩み、そして解決の糸口を探り続けます。トラブルから逃げるのではなく、それを受け入れて解決のプロセスを楽しむこと。それこそが、自分自身の「人生というドラマ」を名作に作り上げる秘訣です。</p><h3>3. トラブルを成長の起爆剤にする</h3><p>問題に直面したとき、それを「ただの苦痛」と捉えるか、「新しい展開へのきっかけ」と捉えるかで、結果は大きく変わります。私たちが日々直面するトラブルは、私たちを試し、鍛え、成長させるために用意されたシナリオの一部なのです。</p><p>これからも、会社として、そして個人として、様々な困難が待ち受けているでしょう。しかし、そのトラブルの一つひとつを乗り越えるたびに、私たちの物語はより深く、より力強い「ドラマ」へと昇華していくはずです。共に問題解決の道を歩み続けましょう。</p></div>
+    </div>
+    <div class="back-home">
+        <a href="../news.html" class="btn">ニュース一覧に戻る</a>
+    </div>
+</div>
+
+
+<div id="article-img-lightbox" class="article-img-lightbox" hidden role="dialog" aria-modal="true" aria-label="画像の拡大表示">
+    <button type="button" class="article-img-lightbox__close" aria-label="閉じる">&times;</button>
+    <img class="article-img-lightbox__img" src="" alt="">
+</div>
+
+<script>
+(function () {
+    var lb = document.getElementById('article-img-lightbox');
+    if (!lb) return;
+    var lbImg = lb.querySelector('.article-img-lightbox__img');
+    var closeBtn = lb.querySelector('.article-img-lightbox__close');
+    function closeLb() {
+        lb.setAttribute('hidden', '');
+        lb.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        lbImg.removeAttribute('src');
+        lbImg.alt = '';
+    }
+    function openLb(src, alt) {
+        if (!src) return;
+        lbImg.src = src;
+        lbImg.alt = alt || '';
+        lb.removeAttribute('hidden');
+        lb.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+    document.addEventListener('click', function (e) {
+        var trigger = e.target.closest('.js-article-lightbox-trigger');
+        if (!trigger) return;
+        e.preventDefault();
+        var src = trigger.getAttribute('data-lightbox-src');
+        var alt = trigger.getAttribute('data-lightbox-alt') || '';
+        if (!src) {
+            var innerImg = trigger.querySelector('img');
+            if (innerImg) src = innerImg.getAttribute('src');
+            if (innerImg && !alt) alt = innerImg.getAttribute('alt') || '';
+        }
+        openLb(src, alt);
+    });
+    lb.addEventListener('click', function (e) {
+        if (e.target === lbImg) return;
+        closeLb();
+    });
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            closeLb();
+        });
+    }
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !lb.hasAttribute('hidden')) closeLb();
+    });
+})();
+</script>
+
+<footer id="contact">
+    <div class="footer-contact-title">お問い合わせ</div>
+    <div class="footer-info">
+        <h3>ニューライフ開発株式会社</h3>
+        <p>〒541-0057 大阪府大阪市中央区北久宝寺町3-6-1 本町南ガーデンシティ7階</p>
+        <p>Email: info@newlife-dev-group.com</p>
+    </div>
+    <div class="copyright">&copy; 2025 NEW LIFE DEVELOPMENT CO., LTD. All Rights Reserved.</div>
+</footer>
+
+</body>
+</html>
