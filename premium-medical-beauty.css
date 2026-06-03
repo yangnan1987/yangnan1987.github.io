@@ -1,4 +1,4 @@
-/* Ponere beauty sub-pages — extends premium-medical palette */
+/* Partner clinic menu sub-pages — extends premium-medical palette */
 :root {
     --teal-deep: #2f5651;
     --teal: #3d6b66;
@@ -116,6 +116,27 @@ a { text-decoration: none; color: inherit; }
     font-size: 0.85rem;
 }
 
+.treatment-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    margin: 0 0 20px;
+    padding: 14px 16px;
+    background: var(--mint-pale);
+    border-radius: 10px;
+    border: 1px solid #e5f0ec;
+}
+.treatment-meta .meta-item {
+    display: flex; flex-direction: column; gap: 4px;
+}
+.treatment-meta .meta-label {
+    font-size: 0.72rem; letter-spacing: 0.06em;
+    color: var(--teal-soft); text-transform: uppercase;
+}
+.treatment-meta .meta-val {
+    font-size: 0.9rem; font-weight: 500; color: var(--teal-deep);
+}
+
 .price-block {
     margin-top: 28px; padding-top: 24px;
     border-top: 2px solid var(--gold-soft);
@@ -144,88 +165,47 @@ a { text-decoration: none; color: inherit; }
     text-align: right; white-space: nowrap;
 }
 
-.doc-gallery { margin-top: 20px; }
-.doc-gallery summary {
-    cursor: pointer; font-size: 0.88rem;
-    color: var(--teal); letter-spacing: 0.05em;
-    padding: 10px 0; list-style: none;
-}
-.doc-gallery summary::-webkit-details-marker { display: none; }
-.doc-gallery summary::before { content: "▸ "; }
-.doc-gallery[open] summary::before { content: "▾ "; }
-.doc-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 12px; padding-top: 8px;
-}
-.doc-grid a {
-    display: block; border-radius: 10px;
-    overflow: hidden; border: 1px solid #e5f0ec;
-    transition: box-shadow .25s, transform .25s;
-}
-.doc-grid a:hover {
-    box-shadow: 0 8px 24px rgba(61,107,102,0.12);
-    transform: translateY(-2px);
-}
-.doc-grid img {
-    width: 100%; height: auto; display: block;
-    vertical-align: middle;
-}
-
-#lightbox {
-    display: none; position: fixed; inset: 0; z-index: 9999;
-    background: rgba(36,67,63,0.92);
-    align-items: center; justify-content: center;
-    padding: 24px;
-}
-#lightbox.open { display: flex; }
-#lightbox img {
-    max-width: min(96vw, 1100px); max-height: 92vh;
-    border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-}
-#lightbox .lb-close {
-    position: absolute; top: 16px; right: 20px;
-    color: #fff; font-size: 2rem; cursor: pointer;
-    line-height: 1; opacity: 0.85;
-}
-#lightbox .lb-close:hover { opacity: 1; }
-
 .beauty-footer {
     text-align: center; padding: 28px 20px;
     background: #24433f; color: #b9d2cc;
     font-size: 0.8rem;
 }
+.beauty-footer .beauty-disclaimer {
+    max-width: 640px; margin: 0 auto 14px;
+    font-size: 0.75rem; line-height: 1.7; color: #9eb8b2;
+}
+.beauty-footer p { margin: 0; }
 
 /* Hub cards on premium-medical.html */
-.ponere-hub {
+.clinic-menu-hub {
     margin-top: 28px; padding-top: 24px;
     border-top: 1px dashed #dceae6;
 }
-.ponere-hub h3 {
+.clinic-menu-hub h3 {
     font-size: 1.05rem; color: var(--teal-deep);
     margin: 0 0 6px;
 }
-.ponere-hub .sub {
+.clinic-menu-hub .sub {
     font-size: 0.88rem; color: var(--teal-soft);
     margin-bottom: 18px;
 }
-.ponere-grid {
+.clinic-menu-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 14px;
 }
-.ponere-card {
+.clinic-menu-card {
     display: block; padding: 18px 20px;
     background: linear-gradient(135deg, #fff, var(--mint-pale));
     border: 1px solid #e5f0ec; border-radius: 12px;
     transition: transform .25s, box-shadow .25s;
 }
-.ponere-card:hover {
+.clinic-menu-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 28px rgba(61,107,102,0.1);
 }
-.ponere-card .t { font-weight: 600; color: var(--teal-deep); margin-bottom: 4px; }
-.ponere-card .d { font-size: 0.82rem; color: #50625d; line-height: 1.6; }
+.clinic-menu-card .t { font-weight: 600; color: var(--teal-deep); margin-bottom: 4px; }
+.clinic-menu-card .d { font-size: 0.82rem; color: #50625d; line-height: 1.6; }
 
 @media (max-width: 640px) {
     .treatment-head, .treatment-body { padding: 22px 20px; }

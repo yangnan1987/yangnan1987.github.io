@@ -17,24 +17,4 @@
             nav.appendChild(a);
         });
     }
-    var lb = document.getElementById('lightbox');
-    if (!lb) {
-        lb = document.createElement('div');
-        lb.id = 'lightbox';
-        lb.innerHTML = '<span class="lb-close" aria-label="閉じる">&times;</span><img src="" alt="">';
-        document.body.appendChild(lb);
-    }
-    var lbImg = lb.querySelector('img');
-    var close = function () { lb.classList.remove('open'); lbImg.src = ''; };
-    lb.querySelector('.lb-close').onclick = close;
-    lb.onclick = function (e) { if (e.target === lb) close(); };
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
-    document.querySelectorAll('[data-lightbox]').forEach(function (el) {
-        el.addEventListener('click', function (e) {
-            e.preventDefault();
-            lbImg.src = el.getAttribute('href') || el.dataset.lightbox;
-            lbImg.alt = el.querySelector('img') ? el.querySelector('img').alt : '';
-            lb.classList.add('open');
-        });
-    });
 })();

@@ -1,0 +1,13 @@
+# Local PDF reference extracts — never publish
+_local/
+ponere/
+
+# Desktop PDF copies
+*.pdf
+
+# Local fonts for QR generation
+fonts/
+
+# Python
+__pycache__/
+*.pyc

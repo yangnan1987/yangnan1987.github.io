@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
-"""Extract Ponere proposal PDF pages to WebP for the site."""
+"""
+INTERNAL ONLY — do not commit output.
+
+Extracts desktop PDF pages to _local/ for staff reference when updating
+beauty-menu-data.yaml. Never deploy these images to the public site.
+"""
 import io
-import os
 import sys
 from pathlib import Path
 
@@ -20,8 +24,8 @@ except ImportError:
     from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT_PAGES = ROOT / "ponere" / "pages"
-OUT_FIGURES = ROOT / "ponere" / "figures"
+OUT_PAGES = ROOT / "_local" / "pdf-reference" / "pages"
+OUT_FIGURES = ROOT / "_local" / "pdf-reference" / "figures"
 MAX_WIDTH = 1400
 WEBP_QUALITY = 82
 
@@ -62,7 +66,6 @@ def main():
                 if base["width"] < 120 or base["height"] < 120:
                     continue
                 fig_idx += 1
-                ext = base["ext"]
                 raw = base["image"]
                 im = Image.open(io.BytesIO(raw))
                 if im.mode in ("RGBA", "P"):
@@ -76,8 +79,9 @@ def main():
                 im.save(out, "WEBP", quality=82)
             except Exception:
                 pass
+    n = len(list(OUT_PAGES.glob("*.webp")))
     doc.close()
-    print(f"Extracted {doc.page_count if False else len(list(OUT_PAGES.glob('*.webp')))} pages from {pdf_path.name}")
+    print(f"Wrote {n} pages to {OUT_PAGES} (local reference only)")
 
 
 if __name__ == "__main__":
