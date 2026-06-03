@@ -142,7 +142,9 @@ a { text-decoration: none; color: inherit; }
 .treatment-visual img {
     width: 100%; height: auto; display: block;
     object-fit: cover;
-    max-height: 240px;
+    object-position: center center;
+    max-height: 220px;
+    background: #f4f9f7;
 }
 .treatment-body .intro {
     margin: 0 0 18px; font-weight: 300; color: #50625d;
