@@ -6,7 +6,6 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = Path(__file__).resolve().parent / "beauty-menu-data.yaml"
-IMG_DIR = ROOT / "assets" / "clinic-menu"
 
 DISCLAIMER = (
     "掲載内容はニューライフ開発株式会社が整理した参考情報です。"
@@ -31,12 +30,9 @@ HEAD = """<!DOCTYPE html>
 </div>
 </div>
 <section class="beauty-hero">
-{hero_visual}
-<div class="beauty-hero-text">
 <div class="eyebrow">Partner Clinic Menu</div>
 <h1>{h1}</h1>
 <p class="lead">{lead}</p>
-</div>
 </section>
 <div class="beauty-wrap">
 """
@@ -73,32 +69,6 @@ def price_table(rows, note="表示価格はすべて税込です。"):
 </div>"""
 
 
-def image_src(rel_path: str) -> str:
-    return rel_path.replace("\\", "/")
-
-
-def hero_visual(fname: str, page: dict) -> str:
-    slug = fname.replace("premium-medical-beauty-", "").replace(".html", "")
-    path = IMG_DIR / f"hero-{slug}.webp"
-    if page.get("hero_image"):
-        path = ROOT / page["hero_image"]
-    if not path.is_file():
-        return ""
-    src = image_src(str(path.relative_to(ROOT)))
-    return f'<div class="beauty-hero-visual"><img src="{src}" alt="" loading="lazy"></div>'
-
-
-def treatment_image_block(t: dict) -> str:
-    path = IMG_DIR / f"{t['id']}.webp"
-    if t.get("image"):
-        path = ROOT / t["image"]
-    if not path.is_file():
-        return ""
-    src = image_src(str(path.relative_to(ROOT)))
-    alt = t.get("image_alt", t["title"])
-    return f'<div class="treatment-visual"><img src="{src}" alt="{alt}" loading="lazy"></div>'
-
-
 def meta_block(meta):
     if not meta:
         return ""
@@ -120,27 +90,15 @@ def treatment(t):
     bullets = "".join(f"<li>{b}</li>" for b in t["bullets"])
     price = price_table(t.get("price_rows", []), t.get("price_note", "表示価格はすべて税込です。"))
     meta = meta_block(t.get("meta"))
-    visual = treatment_image_block(t)
-    if visual:
-        main = f"""<div class="treatment-layout">
-{visual}
-<div class="treatment-copy">
-<p class="intro">{t['intro']}</p>
-{meta}
-<ul class="points">{bullets}</ul>
-</div>
-</div>"""
-    else:
-        main = f"""<p class="intro">{t['intro']}</p>
-{meta}
-<ul class="points">{bullets}</ul>"""
     return f"""<article class="treatment" id="{t['id']}">
 <div class="treatment-head">
 <h2>{t['title']}</h2>
 <div class="en">{t.get('en', '')}</div>
 </div>
 <div class="treatment-body">
-{main}
+<p class="intro">{t['intro']}</p>
+{meta}
+<ul class="points">{bullets}</ul>
 {price}
 </div>
 </article>"""
@@ -151,12 +109,10 @@ def main():
         data = yaml.safe_load(f)
     for fname, page in data["pages"].items():
         body = "".join(treatment(t) for t in page["treatments"])
-        hv = hero_visual(fname, page)
         html = HEAD.format(
             title=page["title"],
             h1=page["h1"],
             lead=page["lead"],
-            hero_visual=hv,
         ) + body + FOOT
         (ROOT / fname).write_text(html, encoding="utf-8")
         print("wrote", fname)
