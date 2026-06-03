@@ -1,0 +1,235 @@
+/* Ponere beauty sub-pages — extends premium-medical palette */
+:root {
+    --teal-deep: #2f5651;
+    --teal: #3d6b66;
+    --teal-soft: #6fa39c;
+    --mint: #a8ddd3;
+    --mint-pale: #d8efea;
+    --gold: #e7c873;
+    --gold-soft: #f4e3b0;
+    --cream: #fbfcfa;
+    --ink: #34433f;
+}
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    font-family: 'Noto Sans JP', sans-serif;
+    color: var(--ink);
+    line-height: 1.85;
+    background: var(--cream);
+    -webkit-font-smoothing: antialiased;
+}
+a { text-decoration: none; color: inherit; }
+
+.beauty-topbar {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(251,252,250,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #e5f0ec;
+    box-shadow: 0 4px 20px rgba(47,86,81,0.06);
+}
+.beauty-topbar-inner {
+    max-width: 1080px; margin: 0 auto;
+    padding: 12px 20px 10px;
+}
+.beauty-back {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.82rem; color: var(--teal-soft);
+    margin-bottom: 10px;
+}
+.beauty-back:hover { color: var(--teal-deep); }
+.beauty-nav {
+    display: flex; gap: 8px; overflow-x: auto;
+    padding-bottom: 4px; scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+}
+.beauty-nav a {
+    flex-shrink: 0;
+    font-size: 0.78rem; letter-spacing: 0.04em;
+    padding: 8px 14px; border-radius: 20px;
+    border: 1px solid #dceae6;
+    color: var(--teal-deep);
+    background: #fff;
+    transition: background .2s, border-color .2s;
+}
+.beauty-nav a:hover { border-color: var(--mint); background: var(--mint-pale); }
+.beauty-nav a.active {
+    background: var(--teal); color: #fff; border-color: var(--teal);
+}
+
+.beauty-hero {
+    max-width: 1080px; margin: 0 auto;
+    padding: 48px 24px 32px; text-align: center;
+}
+.beauty-hero .eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; letter-spacing: 2px;
+    color: var(--teal-soft); font-size: 0.95rem;
+}
+.beauty-hero h1 {
+    font-size: 1.75rem; font-weight: 700;
+    letter-spacing: 2px; color: var(--teal-deep);
+    margin: 8px 0 12px;
+}
+.beauty-hero .lead {
+    max-width: 680px; margin: 0 auto;
+    font-weight: 300; color: #50625d; font-size: 0.98rem;
+}
+
+.beauty-wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px 80px; }
+
+.treatment {
+    margin-bottom: 48px;
+    background: #fff;
+    border: 1px solid #e9f1ee;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 32px rgba(61,107,102,0.06);
+}
+.treatment-head {
+    padding: 28px 32px 20px;
+    background: linear-gradient(120deg, var(--mint-pale), #fff);
+    border-bottom: 1px solid #eaf3ef;
+}
+.treatment-head h2 {
+    margin: 0 0 6px; font-size: 1.35rem;
+    color: var(--teal-deep); letter-spacing: 1px;
+}
+.treatment-head .en {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; color: var(--teal-soft);
+    font-size: 0.92rem;
+}
+.treatment-body { padding: 28px 32px 32px; }
+.treatment-body .intro {
+    margin: 0 0 18px; font-weight: 300; color: #50625d;
+}
+.treatment-body ul.points {
+    margin: 0 0 24px; padding: 0; list-style: none;
+}
+.treatment-body ul.points li {
+    position: relative; padding-left: 22px;
+    margin-bottom: 8px; font-size: 0.95rem; color: #50625d;
+}
+.treatment-body ul.points li::before {
+    content: "✦"; position: absolute; left: 0; color: var(--gold);
+    font-size: 0.85rem;
+}
+
+.price-block {
+    margin-top: 28px; padding-top: 24px;
+    border-top: 2px solid var(--gold-soft);
+}
+.price-block h3 {
+    font-size: 1.05rem; color: var(--teal-deep);
+    margin: 0 0 14px; letter-spacing: 1px;
+}
+.price-note {
+    font-size: 0.78rem; color: var(--teal-soft);
+    margin-top: 10px;
+}
+.price-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 0.88rem;
+}
+.price-table th, .price-table td {
+    padding: 10px 12px; text-align: left;
+    border-bottom: 1px solid #eaf3ef;
+}
+.price-table th {
+    background: var(--mint-pale);
+    color: var(--teal-deep); font-weight: 500;
+}
+.price-table td:last-child, .price-table th:last-child {
+    text-align: right; white-space: nowrap;
+}
+
+.doc-gallery { margin-top: 20px; }
+.doc-gallery summary {
+    cursor: pointer; font-size: 0.88rem;
+    color: var(--teal); letter-spacing: 0.05em;
+    padding: 10px 0; list-style: none;
+}
+.doc-gallery summary::-webkit-details-marker { display: none; }
+.doc-gallery summary::before { content: "▸ "; }
+.doc-gallery[open] summary::before { content: "▾ "; }
+.doc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px; padding-top: 8px;
+}
+.doc-grid a {
+    display: block; border-radius: 10px;
+    overflow: hidden; border: 1px solid #e5f0ec;
+    transition: box-shadow .25s, transform .25s;
+}
+.doc-grid a:hover {
+    box-shadow: 0 8px 24px rgba(61,107,102,0.12);
+    transform: translateY(-2px);
+}
+.doc-grid img {
+    width: 100%; height: auto; display: block;
+    vertical-align: middle;
+}
+
+#lightbox {
+    display: none; position: fixed; inset: 0; z-index: 9999;
+    background: rgba(36,67,63,0.92);
+    align-items: center; justify-content: center;
+    padding: 24px;
+}
+#lightbox.open { display: flex; }
+#lightbox img {
+    max-width: min(96vw, 1100px); max-height: 92vh;
+    border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+#lightbox .lb-close {
+    position: absolute; top: 16px; right: 20px;
+    color: #fff; font-size: 2rem; cursor: pointer;
+    line-height: 1; opacity: 0.85;
+}
+#lightbox .lb-close:hover { opacity: 1; }
+
+.beauty-footer {
+    text-align: center; padding: 28px 20px;
+    background: #24433f; color: #b9d2cc;
+    font-size: 0.8rem;
+}
+
+/* Hub cards on premium-medical.html */
+.ponere-hub {
+    margin-top: 28px; padding-top: 24px;
+    border-top: 1px dashed #dceae6;
+}
+.ponere-hub h3 {
+    font-size: 1.05rem; color: var(--teal-deep);
+    margin: 0 0 6px;
+}
+.ponere-hub .sub {
+    font-size: 0.88rem; color: var(--teal-soft);
+    margin-bottom: 18px;
+}
+.ponere-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+}
+.ponere-card {
+    display: block; padding: 18px 20px;
+    background: linear-gradient(135deg, #fff, var(--mint-pale));
+    border: 1px solid #e5f0ec; border-radius: 12px;
+    transition: transform .25s, box-shadow .25s;
+}
+.ponere-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(61,107,102,0.1);
+}
+.ponere-card .t { font-weight: 600; color: var(--teal-deep); margin-bottom: 4px; }
+.ponere-card .d { font-size: 0.82rem; color: #50625d; line-height: 1.6; }
+
+@media (max-width: 640px) {
+    .treatment-head, .treatment-body { padding: 22px 20px; }
+    .beauty-hero h1 { font-size: 1.45rem; }
+    .price-table { font-size: 0.8rem; }
+    .price-table th, .price-table td { padding: 8px 6px; }
+}
