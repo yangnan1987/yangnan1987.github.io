@@ -59,7 +59,31 @@ a { text-decoration: none; color: inherit; }
 
 .beauty-hero {
     max-width: 1080px; margin: 0 auto;
-    padding: 48px 24px 32px; text-align: center;
+    padding: 48px 24px 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+}
+.beauty-hero:has(.beauty-hero-visual:only-child) {
+    grid-template-columns: 1fr;
+    text-align: center;
+}
+.beauty-hero:not(:has(.beauty-hero-visual)) {
+    grid-template-columns: 1fr;
+    text-align: center;
+}
+.beauty-hero-text { text-align: center; }
+.beauty-hero-visual {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #e5f0ec;
+    box-shadow: 0 12px 36px rgba(61,107,102,0.1);
+    background: #fff;
+}
+.beauty-hero-visual img {
+    width: 100%; height: auto; display: block;
+    max-height: 280px; object-fit: cover;
 }
 .beauty-hero .eyebrow {
     font-family: 'Cormorant Garamond', serif;
@@ -101,6 +125,25 @@ a { text-decoration: none; color: inherit; }
     font-size: 0.92rem;
 }
 .treatment-body { padding: 28px 32px 32px; }
+.treatment-layout {
+    display: grid;
+    grid-template-columns: minmax(200px, 280px) 1fr;
+    gap: 28px;
+    align-items: start;
+    margin-bottom: 8px;
+}
+.treatment-visual {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #eaf3ef;
+    background: var(--mint-pale);
+    box-shadow: 0 8px 24px rgba(61,107,102,0.08);
+}
+.treatment-visual img {
+    width: 100%; height: auto; display: block;
+    object-fit: cover;
+    max-height: 240px;
+}
 .treatment-body .intro {
     margin: 0 0 18px; font-weight: 300; color: #50625d;
 }
@@ -208,6 +251,14 @@ a { text-decoration: none; color: inherit; }
 .clinic-menu-card .d { font-size: 0.82rem; color: #50625d; line-height: 1.6; }
 
 @media (max-width: 640px) {
+    .beauty-hero {
+        grid-template-columns: 1fr;
+        padding: 36px 20px 28px;
+        text-align: center;
+    }
+    .beauty-hero-visual { order: -1; max-width: 320px; margin: 0 auto; }
+    .treatment-layout { grid-template-columns: 1fr; }
+    .treatment-visual { max-width: 100%; }
     .treatment-head, .treatment-body { padding: 22px 20px; }
     .beauty-hero h1 { font-size: 1.45rem; }
     .price-table { font-size: 0.8rem; }
