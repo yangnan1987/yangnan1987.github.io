@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/lifelogo-easy" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/amsterdam-4" rel="stylesheet">
     <link href="premium-medical-beauty.css" rel="stylesheet">
     <style>
         :root {
@@ -136,15 +135,13 @@
         .name-block {
             margin-bottom: 18px;
         }
-        .signature-name {
-            font-family: 'Amsterdam', 'Amsterdam Four', cursive;
-            font-size: 3.5rem;
-            font-weight: 400;
-            font-style: normal;
-            color: var(--teal-deep);
-            line-height: 1.05;
-            letter-spacing: 0.02em;
-            display: inline-block;
+        .signature-img {
+            display: block;
+            height: 4.5rem;
+            width: auto;
+            max-width: min(100%, 320px);
+            object-fit: contain;
+            object-position: left center;
         }
         .profile .role {
             display: inline-block;
@@ -290,7 +287,7 @@
             .hero-logo .nl-life { font-size: 2.65rem; }
             .section { padding: 56px 20px; }
             .profile { padding: 32px 24px; text-align: center; border-left-width: 3px; }
-            .signature-name { font-size: 2.75rem; }
+            .signature-img { height: 3.6rem; margin: 0 auto; object-position: center; }
             .profile .bio { margin: 0 auto; text-align: left; }
             .biz-head { flex-direction: column; text-align: center; gap: 8px; padding: 24px 22px; }
             .biz-body { padding: 24px 22px 28px; }
@@ -326,7 +323,7 @@
 <section class="section">
     <div class="profile reveal">
         <div class="name-block">
-            <span class="signature-name">Doira</span>
+            <img class="signature-img" src="assets/doria-signature.png" alt="Doria" width="280" height="72">
         </div>
         <span class="role">Medical事業統括責任者</span>
         <p class="bio">
@@ -446,7 +443,7 @@
             <div class="eyebrow serif">Contact</div>
             <h2 class="section-title">お問い合わせ</h2>
             <p class="closing-lead">
-                事業に関するご相談・ご紹介は、統括責任者 Doira まで直接お問い合わせください。
+                事業に関するご相談・ご紹介は、統括責任者 Doria まで直接お問い合わせください。
                 完全予約制にて、個別にご対応いたします。
             </p>
             <div class="contact-list">
