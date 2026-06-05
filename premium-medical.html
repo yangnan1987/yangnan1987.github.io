@@ -132,16 +132,22 @@
             padding: 40px 44px 42px;
             box-shadow: 0 12px 36px rgba(61,107,102,0.07);
         }
+        .profile-identity {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
         .name-block {
-            margin-bottom: 18px;
+            line-height: 0;
         }
         .signature-img {
             display: block;
-            height: 6.25rem;
+            height: 7.75rem;
             width: auto;
-            max-width: min(100%, 460px);
+            max-width: min(100%, 520px);
             object-fit: contain;
-            object-position: left center;
         }
         .profile .role {
             display: inline-block;
@@ -151,7 +157,7 @@
             background: var(--teal);
             padding: 6px 18px;
             border-radius: 20px;
-            margin-bottom: 18px;
+            margin: 0;
         }
         .profile .bio {
             margin: 0;
@@ -287,7 +293,8 @@
             .hero-logo .nl-life { font-size: 2.65rem; }
             .section { padding: 56px 20px; }
             .profile { padding: 32px 24px; text-align: center; border-left-width: 3px; }
-            .signature-img { height: 5rem; max-width: min(100%, 360px); margin: 0 auto; object-position: center; }
+            .profile-identity { align-items: center; width: 100%; }
+            .signature-img { height: 6.25rem; max-width: min(100%, 400px); }
             .profile .bio { margin: 0 auto; text-align: left; }
             .biz-head { flex-direction: column; text-align: center; gap: 8px; padding: 24px 22px; }
             .biz-body { padding: 24px 22px 28px; }
@@ -322,10 +329,12 @@
 
 <section class="section">
     <div class="profile reveal">
-        <div class="name-block">
-            <img class="signature-img" src="assets/doria-signature.png" alt="Doria" width="400" height="100">
+        <div class="profile-identity">
+            <div class="name-block">
+                <img class="signature-img" src="assets/doria-signature.png" alt="Doria" width="480" height="124">
+            </div>
+            <span class="role">Medical事業統括責任者</span>
         </div>
-        <span class="role">Medical事業統括責任者</span>
         <p class="bio">
             プレミアム健診・医療ソリューション・メディカルビューティの3事業を統括し、
             日本最高水準の医療リソースと、富裕層・経営者層のニーズを結びつけます。
