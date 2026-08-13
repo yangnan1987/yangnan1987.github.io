@@ -2,8 +2,10 @@
 _local/
 ponere/
 
-# Desktop PDF copies
+# Desktop PDF copies (published guides in docs/ are allowed)
 *.pdf
+!docs/
+!docs/*.pdf
 
 # Local fonts for QR generation
 fonts/

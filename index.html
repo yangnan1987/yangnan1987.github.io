@@ -58,7 +58,8 @@
           {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "資産管理コンサルティング", "url": "https://newlife-dev-group.com/service-asset.html"}},
           {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "ビジネスマッチング（M&A）", "url": "https://newlife-dev-group.com/service-ma.html"}},
           {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "歯科医療ビジネスソリューション", "url": "https://newlife-dev-group.com/service-dental.html"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "経営サポート", "url": "https://newlife-dev-group.com/service-management.html"}}
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "経営サポート", "url": "https://newlife-dev-group.com/service-management.html"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "会社設立・経営管理ビザ支援", "url": "https://newlife-dev-group.com/keiei-kanri.html"}}
         ]
       }
     }
@@ -144,6 +145,38 @@
         .service-card { background: white; width: 100%; padding: 40px 20px; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; border-top: 4px solid #1a2a3a; transition: 0.3s; }
         .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
         .service-card h3 { color: #1a2a3a; font-size: 1.1rem; margin-bottom: 15px; min-height: 3em; display: flex; align-items: center; justify-content: center; }
+
+        .visa-strip {
+            max-width: 1300px;
+            margin: 36px auto 0;
+            background: #1a2a3a;
+            color: #fff;
+            border-radius: 8px;
+            padding: 28px 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .visa-strip h3 { margin: 0 0 6px; font-size: 1.25rem; font-weight: 700; }
+        .visa-strip p { margin: 0; font-size: 0.92rem; opacity: 0.88; }
+        .visa-strip-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+        .visa-strip .strip-btn {
+            display: inline-block;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            background: #fff;
+            color: #1a2a3a;
+            font-weight: 700;
+        }
+        .visa-strip .strip-btn-ghost {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.65);
+            font-weight: 400;
+        }
 
         /* News */
         .news-list { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
@@ -246,6 +279,7 @@
             .news-card-home { flex-direction: column; align-items: flex-start; gap: 15px; }
             .news-info-home { flex-direction: column; gap: 5px; }
             .news-link-btn-home { align-self: flex-end; }
+            .visa-strip { padding: 24px 20px; }
         }
 
         /* Tablet / narrow desktop: 2x2 layout */
@@ -270,6 +304,7 @@
                     <li><a href="service-ma.html">ビジネスマッチング（M＆A）</a></li>
                     <li><a href="service-dental.html">歯科医療ビジネスソリューション</a></li>
                     <li><a href="service-management.html">経営サポート</a></li>
+                    <li><a href="keiei-kanri.html">会社設立・経営管理ビザ（中文）</a></li>
                 </ul>
             </li>
             <li><a href="service-management.html#case-studies">開発事例</a></li>
@@ -329,7 +364,17 @@
         <a href="service-dental.html" class="service-card"><h3>歯科医療ビジネス<br>ソリューション</h3><span>詳細を見る &rarr;</span></a>
         <a href="service-management.html" class="service-card"><h3>経営サポート<br>（システム開発・AI導入）</h3><span>詳細を見る &rarr;</span></a>
     </div>
-</div>
+        <div class="visa-strip">
+            <div>
+                <h3>会社設立・経営管理ビザ支援（中文指南）</h3>
+                <p>对应 2025年10月16日改正　｜　会社设立 × 经营管理签证实务流程与报价项目</p>
+            </div>
+            <div class="visa-strip-actions">
+                <a class="strip-btn" href="keiei-kanri.html">查看指南</a>
+                <a class="strip-btn strip-btn-ghost" href="docs/keiei-kanri-guide-2026.pdf" download>下载 PDF</a>
+            </div>
+        </div>
+    </div>
 
 <div class="section" id="news">
     <h2 class="section-title">NEWS</h2>
@@ -341,6 +386,14 @@
     </div>
     <div id="home-news-container" class="news-list">
 <!-- BUILD:HOME_NEWS_START -->
+                <div class="news-card-home">
+                    <div class="news-info-home">
+                        <span class="news-date-home">2026.8.13</span>
+                        <span class="news-tag-home tag-internal">お知らせ</span>
+                        <div class="news-title-home">【お知らせ】経営管理ビザ×会社設立の中文実務ガイドを公開しました</div>
+                    </div>
+                    <a href="news/n_20260813_1.html" class="news-link-btn-home">詳細を見る</a>
+                </div>
                 <div class="news-card-home">
                     <div class="news-info-home">
                         <span class="news-date-home">2026.7.28</span>
@@ -372,14 +425,6 @@
                         <div class="news-title-home">【活動レポート】ワインはなぜ高いのか——ブランド・稀缺・ヴィンテージから学ぶ「独自性」の経営</div>
                     </div>
                     <a href="news/n_20260624_1.html" class="news-link-btn-home">詳細を見る</a>
-                </div>
-                <div class="news-card-home">
-                    <div class="news-info-home">
-                        <span class="news-date-home">2026.6.22</span>
-                        <span class="news-tag-home tag-news">ニュース</span>
-                        <div class="news-title-home">【ニュース】2026 FIFAワールドカップ：日本代表がチュニジアに4-0で圧勝——グループ突破目前、夢はさらに高く</div>
-                    </div>
-                    <a href="news/n_20260622_1.html" class="news-link-btn-home">詳細を見る</a>
                 </div>
                 <noscript><p><a href="news.html">ニュース一覧を見る</a></p></noscript>
 <!-- BUILD:HOME_NEWS_END -->

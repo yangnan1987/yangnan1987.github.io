@@ -312,6 +312,7 @@ const fixedUrls = [
   { loc: `${BASE}/service-ma.html`, file: 'service-ma.html', changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE}/service-dental.html`, file: 'service-dental.html', changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE}/service-management.html`, file: 'service-management.html', changefreq: 'monthly', priority: '0.8' },
+  { loc: `${BASE}/keiei-kanri.html`, file: 'keiei-kanri.html', changefreq: 'monthly', priority: '0.8' },
 ].map((u) => ({ ...u, lastmod: fileLastmod(u.file) }));
 
 const newsUrls = items.map((item) => ({
