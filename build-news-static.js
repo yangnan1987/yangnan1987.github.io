@@ -22,6 +22,20 @@ function escapeHtml(s) {
     .replace(/'/g, '&#39;');
 }
 
+/** 日本語タイトルの末尾1字落ちを抑える。リスト・詳細見出し用。 */
+function formatNewsTitleHtml(title) {
+  const raw = String(title || '');
+  const chars = Array.from(raw);
+  const keep = 4;
+  if (chars.length <= keep + 10) return escapeHtml(raw);
+  const head = chars.slice(0, -keep).join('');
+  const tail = chars.slice(-keep).join('');
+  const withBreaks = escapeHtml(head)
+    .replace(/——/g, '——<wbr>')
+    .replace(/：/g, '：<wbr>');
+  return `${withBreaks}<span class="title-nowrap">${escapeHtml(tail)}</span>`;
+}
+
 function stripHtml(html) {
   if (!html) return '';
   return String(html).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 160);
@@ -137,7 +151,7 @@ function buildNewsCardHtml(item, variant) {
   const linkTarget = item.type === 'internal' || item.type === 'event' ? '' : ' target="_blank" rel="noopener noreferrer"';
   const linkText = item.type === 'internal' || item.type === 'event' ? '詳細を見る' : '記事を読む';
   const tagClass = getTagClass(item.tag);
-  const title = escapeHtml(item.title || '');
+  const title = formatNewsTitleHtml(item.title || '');
   const date = escapeHtml(item.date || '');
   const tag = escapeHtml(item.tag || '');
 
@@ -234,7 +248,7 @@ for (const item of items) {
     .replace(/data-lightbox-src="images\//g, 'data-lightbox-src="../images/');
   const innerHtml = `
     <div class="news-detail-header">
-        <h1 class="news-detail-title">${escapeHtml(title)}</h1>
+        <h1 class="news-detail-title">${formatNewsTitleHtml(title)}</h1>
         <div class="news-detail-meta">
             <span class="news-detail-date">${escapeHtml(item.date)}</span>
             <span class="news-detail-tag ${tagClass}">${escapeHtml(item.tag)}</span>

@@ -1,4 +1,24 @@
 (function () {
+  window.formatNewsTitle = function (title) {
+    var raw = String(title || "");
+    var chars = Array.from(raw);
+    var keep = 4;
+    function esc(s) {
+      return String(s)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+    if (chars.length <= keep + 10) return esc(raw);
+    var head = chars.slice(0, -keep).join("");
+    var tail = chars.slice(-keep).join("");
+    var withBreaks = esc(head)
+      .replace(/——/g, "——<wbr>")
+      .replace(/：/g, "：<wbr>");
+    return withBreaks + '<span class="title-nowrap">' + esc(tail) + "</span>";
+  };
+
   var viewport = document.querySelector('meta[name="viewport"]');
   if (viewport && viewport.content.indexOf("viewport-fit") === -1) {
     viewport.content += ", viewport-fit=cover";

@@ -59,6 +59,9 @@
             color: #1a2a3a;
             margin-bottom: 20px;
             font-weight: 700;
+            line-height: 1.45;
+            line-break: strict;
+            text-wrap: pretty;
         }
 
         .news-detail-meta {
@@ -511,7 +514,7 @@
                 const tagClass = getTagClass(newsItem.tag);
                 let html = `
                     <div class="news-detail-header">
-                        <h1 class="news-detail-title">${newsItem.title}</h1>
+                        <h1 class="news-detail-title">${typeof formatNewsTitle === 'function' ? formatNewsTitle(newsItem.title) : newsItem.title}</h1>
                         <div class="news-detail-meta">
                             <span class="news-detail-date">${newsItem.date}</span>
                             <span class="news-detail-tag ${tagClass}">${newsItem.tag}</span>

@@ -1,4 +1,18 @@
 /* Shared mobile layout: hamburger nav + overflow guards. Desktop nav unchanged above 900px. */
+
+/* 日本語タイトル：末尾1字だけ次行に落ちるのを抑える */
+.news-title,
+.news-title-home,
+.news-detail-title {
+  line-height: 1.55;
+  line-break: strict;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+}
+
+.title-nowrap {
+  white-space: nowrap;
+}
 *,
 *::before,
 *::after {
