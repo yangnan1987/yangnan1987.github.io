@@ -12,6 +12,10 @@ const NEWS_DIR = path.join(ROOT, 'news');
 const TEMPLATE_PATH = path.join(ROOT, 'news-detail.html');
 const BASE = 'https://newlife-dev-group.com';
 const DEFAULT_OG_IMAGE = `${BASE}/hero-bg.jpg`;
+/** 公开页 <title> 的统一后缀。首页标题单独维护，不走这里。 */
+const TITLE_SUFFIX = '｜ニューライフ開発株式会社';
+/** 整条 <title>（标题部分 + 后缀）的上限。日文按 1 字计。 */
+const TITLE_MAX_CHARS = 60;
 
 function escapeHtml(s) {
   if (!s) return '';
@@ -104,6 +108,31 @@ function publishLastmod(dateStr) {
   return iso;
 }
 
+function charCount(s) {
+  return Array.from(String(s || '')).length;
+}
+
+/**
+ * <title>、og:title、twitter:title 用的标题部分。
+ * 有 seoTitle 时优先用它；否则用 title。
+ * 可见 h1 和 JSON-LD headline 始终用 title，不在这里缩短。
+ */
+function seoHeadline(item) {
+  const full = String(item.title || '');
+  const custom = item.seoTitle != null && String(item.seoTitle).trim() !== ''
+    ? String(item.seoTitle).trim()
+    : '';
+  const headline = custom || full;
+  const docLen = charCount(headline + TITLE_SUFFIX);
+  if (docLen > TITLE_MAX_CHARS) {
+    const limit = TITLE_MAX_CHARS - charCount(TITLE_SUFFIX);
+    throw new Error(
+      `${item.id || '(no id)'} 的页面标题为 ${docLen} 字，超过 ${TITLE_MAX_CHARS} 字。请在 news-data.json 增加不超过 ${limit} 字的 seoTitle（只用于 <title>、og:title、twitter:title）。`
+    );
+  }
+  return headline;
+}
+
 function getTagClass(tag) {
   if (tag === 'お知らせ') return 'tag-internal';
   if (tag === 'ニュース') return 'tag-news';
@@ -122,14 +151,14 @@ function stripExistingSeoMeta(html) {
     .replace(/\s*<script\s+type="application\/ld\+json">[\s\S]*?<\/script>\s*/gi, '\n    ');
 }
 
-function buildArticleSeoBlock(item, id, title, desc) {
+function buildArticleSeoBlock(item, id, socialTitle, schemaHeadline, desc) {
   const pageUrl = `${BASE}/news/${id}.html`;
   const ogImage = extractFirstImage(item.content);
   const datePublished = parseDateToIso(item.date);
 
   const ogTwitter = `    <!-- Open Graph -->
     <meta property="og:type" content="article">
-    <meta property="og:title" content="${escapeHtml(title)}">
+    <meta property="og:title" content="${escapeHtml(socialTitle)}">
     <meta property="og:description" content="${escapeHtml(desc)}">
     <meta property="og:url" content="${pageUrl}">
     <meta property="og:image" content="${ogImage}">
@@ -138,7 +167,7 @@ function buildArticleSeoBlock(item, id, title, desc) {
     <meta property="article:published_time" content="${datePublished}">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="${escapeHtml(title)}">
+    <meta name="twitter:title" content="${escapeHtml(socialTitle)}">
     <meta name="twitter:description" content="${escapeHtml(desc)}">
     <meta name="twitter:image" content="${ogImage}">`;
 
@@ -146,7 +175,7 @@ function buildArticleSeoBlock(item, id, title, desc) {
     {
       "@context": "https://schema.org",
       "@type": "NewsArticle",
-      "headline": ${JSON.stringify(title)},
+      "headline": ${JSON.stringify(schemaHeadline)},
       "description": ${JSON.stringify(desc)},
       "datePublished": "${datePublished}",
       "dateModified": "${datePublished}",
@@ -271,9 +300,11 @@ const activeIds = new Set(items.map((item) => item.id));
 for (const item of items) {
   const id = item.id;
   const title = item.title || '';
+  const socialTitle = seoHeadline(item);
+  const docTitle = `${socialTitle}${TITLE_SUFFIX}`;
   const desc = stripHtml(item.content) || title;
   const tagClass = getTagClass(item.tag);
-  const { ogTwitter, jsonLd } = buildArticleSeoBlock(item, id, title, desc);
+  const { ogTwitter, jsonLd } = buildArticleSeoBlock(item, id, socialTitle, title, desc);
   const contentHtml = (item.content || '')
     .replace(/src="images\//g, 'src="../images/')
     .replace(/data-lightbox-src="images\//g, 'data-lightbox-src="../images/');
@@ -288,7 +319,10 @@ for (const item of items) {
     <div class="news-detail-content">${contentHtml}</div>`;
 
   let html = stripExistingSeoMeta(template)
-    .replace('<title>NEWS 詳細 - NEW LIFE DEVELOPMENT</title>', `<title>${escapeHtml(title)} - NEW LIFE DEVELOPMENT</title>`)
+    .replace(
+      '<title>NEWS 詳細｜ニューライフ開発株式会社</title>',
+      `<title>${escapeHtml(docTitle)}</title>`
+    )
     .replace(
       '<meta name="viewport" content="width=device-width, initial-scale=1.0">',
       `<meta name="description" content="${escapeHtml(desc)}">
@@ -297,6 +331,9 @@ ${ogTwitter}
 ${jsonLd}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">`
     );
+  if (!html.includes(`<title>${escapeHtml(docTitle)}</title>`)) {
+    throw new Error('新闻模板里的 <title> 占位没有被替换，请检查 news-detail.html');
+  }
 
   html = html
     .replace(/href="index\.html"/g, 'href="../index.html"')
