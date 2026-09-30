@@ -274,12 +274,15 @@ ${jsonLd}
     .replace(/href="service-ma\.html"/g, 'href="../service-ma.html"')
     .replace(/href="service-dental\.html"/g, 'href="../service-dental.html"')
     .replace(/href="service-management\.html"/g, 'href="../service-management.html"')
+    .replace(/href="index\.html#services"/g, 'href="../index.html#services"')
     .replace(/href="index\.html#contact"/g, 'href="../index.html#contact"');
 
   const containerStart = '<div class="container">';
   const scriptEnd = '</script>';
   const idx1 = html.indexOf(containerStart);
-  const idx2 = html.indexOf(scriptEnd);
+  // JSON-LD（以及 head 里的其它 script）也有 </script>，且出现在正文容器之前。
+  // 必须从容器之后截取，否则会把模板后半段（第二套 title/body/导航和「読み込み中...」）再拼一次。
+  const idx2 = idx1 === -1 ? -1 : html.indexOf(scriptEnd, idx1);
   if (idx1 === -1 || idx2 === -1) {
     console.error('Template structure changed, skip', id);
     continue;
