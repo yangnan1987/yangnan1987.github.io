@@ -4,6 +4,7 @@
  */
 const fs = require('fs');
 const path = require('path');
+const { execFileSync } = require('child_process');
 
 const ROOT = __dirname;
 const NEWS_DATA_PATH = path.join(ROOT, 'news-data.json');
@@ -65,12 +66,42 @@ function extractFirstImage(content) {
   return DEFAULT_OG_IMAGE;
 }
 
-function fileLastmod(relativePath) {
+/**
+ * sitemap 的 lastmod 必须稳定，不能用文件 mtime。
+ * clone / checkout 会把 mtime 改成检出时刻，上次运行曾因此把固定页的 lastmod 全部改掉。
+ * 这里取该文件最后一次 git 提交的提交者日期（%cI 前 10 位，与运行环境时区无关）。
+ */
+function gitLastmod(relativePath) {
+  let out = '';
   try {
-    return fs.statSync(path.join(ROOT, relativePath)).mtime.toISOString().slice(0, 10);
-  } catch {
-    return new Date().toISOString().slice(0, 10);
+    out = execFileSync('git', ['log', '-1', '--format=%cI', '--', relativePath], {
+      cwd: ROOT,
+      encoding: 'utf8',
+    }).trim();
+  } catch (err) {
+    throw new Error(`无法读取 ${relativePath} 的 git 提交日期：${err.message}`);
   }
+  const matched = out.match(/^(\d{4}-\d{2}-\d{2})/);
+  if (!matched) {
+    throw new Error(`无法读取 ${relativePath} 的 git 提交日期（git log 无记录）`);
+  }
+  return matched[1];
+}
+
+/** 新闻 lastmod 用 news-data.json 的发布日，不用 mtime，也不用“今天”。 */
+function publishLastmod(dateStr) {
+  const iso = parseDateToIso(dateStr);
+  const roundTrip = String(dateStr || '')
+    .replace(/年/g, '-')
+    .replace(/月/g, '-')
+    .replace(/日/g, '')
+    .replace(/\./g, '-')
+    .trim();
+  const parts = roundTrip.split('-').filter(Boolean);
+  if (parts.length < 3 || !/^\d{4}-\d{2}-\d{2}$/.test(iso)) {
+    throw new Error(`新闻日期无法解析，拒绝写入 sitemap：${dateStr}`);
+  }
+  return iso;
 }
 
 function getTagClass(tag) {
@@ -322,6 +353,9 @@ ${innerHtml}
   console.log('Generated:', outPath);
 }
 
+// 应被收录的固定页。不收录：noindex 页（premium-medical*、news-detail、404、已下架旧新闻）、
+// 以及站内没有链接、社长尚未决定是否公开的 service-beauty / service-trade / service-welfare。
+// PDF 是首页、指南页和相关新闻里实际链接的公开文件，与指南页一起交给搜索引擎。
 const fixedUrls = [
   { loc: `${BASE}/`, file: 'index.html', changefreq: 'weekly', priority: '1.0' },
   { loc: `${BASE}/news.html`, file: 'news.html', changefreq: 'weekly', priority: '0.9' },
@@ -330,13 +364,15 @@ const fixedUrls = [
   { loc: `${BASE}/service-dental.html`, file: 'service-dental.html', changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE}/service-management.html`, file: 'service-management.html', changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE}/keiei-kanri.html`, file: 'keiei-kanri.html', changefreq: 'monthly', priority: '0.8' },
-].map((u) => ({ ...u, lastmod: fileLastmod(u.file) }));
+  { loc: `${BASE}/docs/keiei-kanri-guide-2026.pdf`, file: 'docs/keiei-kanri-guide-2026.pdf', changefreq: 'monthly', priority: '0.6' },
+].map((u) => ({ ...u, lastmod: gitLastmod(u.file) }));
 
 const newsUrls = items.map((item) => ({
   loc: `${BASE}/news/${item.id}.html`,
   changefreq: 'monthly',
   priority: item.type === 'internal' ? '0.6' : '0.7',
-  lastmod: parseDateToIso(item.date),
+  // 发布日。批量重生成模板时文件的 git 日期会变成同一天，不能拿来当每篇新闻的 lastmod。
+  lastmod: publishLastmod(item.date),
 }));
 
 function sitemapUrlEntry(u) {
