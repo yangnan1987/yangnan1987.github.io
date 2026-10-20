@@ -1,11 +1,10 @@
 /*
  * Cloudflare Web Analytics 与 Microsoft Clarity。
- * 只替换下面两处引号中的占位符；未替换或页面为 noindex 时不加载外部脚本。
- * 不要加入其他统计工具。
+ * noindex 与未公开页面不加载。不要加入其他统计工具。
  */
 (function () {
-  var cfToken = "CF_WEB_ANALYTICS_TOKEN";
-  var clarityId = "CLARITY_PROJECT_ID";
+  var cfToken = "b2c1ecf2019f4cf1a4d0984d094269e5";
+  var clarityId = "z0va23d3w2";
   var cfPlaceholder = ["CF_WEB", "ANALYTICS_TOKEN"].join("_");
   var clarityPlaceholder = ["CLARITY", "PROJECT_ID"].join("_");
 

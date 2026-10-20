@@ -284,3 +284,13 @@ body {
     display: none !important;
   }
 }
+
+footer .footer-legal {
+  margin: 0 0 14px;
+}
+
+footer .footer-legal a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
