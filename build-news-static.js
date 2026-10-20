@@ -401,7 +401,7 @@ const fixedUrls = [
   { loc: `${BASE}/service-dental.html`, file: 'service-dental.html', changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE}/service-management.html`, file: 'service-management.html', changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE}/keiei-kanri.html`, file: 'keiei-kanri.html', changefreq: 'monthly', priority: '0.8' },
-  { loc: `${BASE}/external-transmission.html`, file: 'external-transmission.html', changefreq: 'yearly', priority: '0.3' },
+  { loc: `${BASE}/privacy-policy.html`, file: 'privacy-policy.html', changefreq: 'yearly', priority: '0.3' },
   { loc: `${BASE}/docs/keiei-kanri-guide-2026.pdf`, file: 'docs/keiei-kanri-guide-2026.pdf', changefreq: 'monthly', priority: '0.6' },
 ].map((u) => ({ ...u, lastmod: gitLastmod(u.file) }));
 
