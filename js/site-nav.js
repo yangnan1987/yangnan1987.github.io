@@ -1,3 +1,60 @@
+/*
+ * Cloudflare Web Analytics 与 Microsoft Clarity。
+ * 只替换下面两处引号中的占位符；未替换或页面为 noindex 时不加载外部脚本。
+ * 不要加入其他统计工具。
+ */
+(function () {
+  var cfToken = "CF_WEB_ANALYTICS_TOKEN";
+  var clarityId = "CLARITY_PROJECT_ID";
+  var cfPlaceholder = ["CF_WEB", "ANALYTICS_TOKEN"].join("_");
+  var clarityPlaceholder = ["CLARITY", "PROJECT_ID"].join("_");
+
+  function configured(value, placeholder) {
+    if (typeof value !== "string") return "";
+    var trimmed = value.trim();
+    if (!trimmed || trimmed === placeholder) return "";
+    return trimmed;
+  }
+
+  function isNoindexPage() {
+    var metas = document.querySelectorAll("meta[name='robots']");
+    for (var i = 0; i < metas.length; i++) {
+      var content = (metas[i].getAttribute("content") || "").toLowerCase();
+      if (content.indexOf("noindex") !== -1) return true;
+    }
+    return false;
+  }
+
+  // 站内未公开、也未放入 sitemap 的页面。公开后从这里去掉文件名即可。
+  function isUnpublishedPage() {
+    var file = (location.pathname || "").split("/").pop();
+    return file === "service-beauty.html" || file === "service-trade.html" || file === "service-welfare.html";
+  }
+
+  if (!document.head || isNoindexPage() || isUnpublishedPage()) return;
+
+  var token = configured(cfToken, cfPlaceholder);
+  if (token) {
+    var beacon = document.createElement("script");
+    beacon.defer = true;
+    beacon.src = "https://static.cloudflareinsights.com/beacon.min.js";
+    beacon.setAttribute("data-cf-beacon", JSON.stringify({ token: token }));
+    document.head.appendChild(beacon);
+  }
+
+  var projectId = configured(clarityId, clarityPlaceholder);
+  if (projectId) {
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+      t = l.createElement(r);
+      t.async = 1;
+      t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0];
+      y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", projectId);
+  }
+})();
+
 (function () {
   window.formatNewsTitle = function (title) {
     var raw = String(title || "");
