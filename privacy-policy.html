@@ -63,7 +63,9 @@
         .legal-ol { list-style: decimal; padding-left: 1.4em; }
         .legal-links li, .legal-ol li { margin: 10px 0; }
         .legal-page a { color: #1a2a3a; text-decoration: underline; text-underline-offset: 0.15em; }
-        .confirm { font-weight: 700; }
+        .cookie-table { width: 100%; border-collapse: collapse; margin: 0 0 16px; font-size: 0.95rem; }
+        .cookie-table th, .cookie-table td { border: 1px solid #d7dde3; padding: 8px 10px; text-align: left; vertical-align: top; }
+        .cookie-table th { background: #f3f6f8; color: #1a2a3a; }
 
         footer { background: #1a2a3a; color: white; padding: 60px 10%; text-align: center; }
         .footer-contact-title { font-size: 1.5rem; font-weight: bold; margin-bottom: 30px; }
@@ -117,13 +119,11 @@
         <dt>名称</dt>
         <dd>ニューライフ開発株式会社</dd>
         <dt>所在地</dt>
-        <dd>〒541-0057 大阪府大阪市中央区北久宝寺町3-6-1 本町南ガーデンシティ7階<span class="confirm">【要確認】</span></dd>
+        <dd>〒541-0057 大阪府大阪市中央区北久宝寺町3-6-1 本町南ガーデンシティ7階</dd>
         <dt>代表者</dt>
-        <dd>代表取締役　宋 超<span class="confirm">【要確認】</span></dd>
+        <dd>代表取締役　宋 超</dd>
         <dt>連絡先</dt>
-        <dd>info@newlife-dev-group.com<span class="confirm">【要確認】</span></dd>
-        <dt>電話</dt>
-        <dd><span class="confirm">【要確認】</span></dd>
+        <dd>info@newlife-dev-group.com</dd>
     </dl>
 
     <h2>取得する情報</h2>
@@ -144,7 +144,7 @@
         <li>公衆衛生の向上または児童の健全な育成の推進のために特に必要がある場合であって、本人の同意を得ることが困難であるとき</li>
         <li>国の機関もしくは地方公共団体またはその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合であって、本人の同意を得ることにより当該事務の遂行に支障を及ぼすおそれがあるとき</li>
     </ol>
-    <p>個人情報の取り扱いの委託の有無、および委託先：<span class="confirm">【要確認】</span></p>
+    <p>当社は、現在、個人情報の取り扱いを外部に委託していません。</p>
 
     <h2>外部送信</h2>
     <p>当ウェブサイトでは、サイト改善を目的として、次のアクセス解析ツールを利用しています。改正電気通信事業法の外部送信規律に関し、外部の事業者へ送信される内容は次のとおりです。</p>
@@ -178,36 +178,76 @@
     </ul>
 
     <h2>Cookie</h2>
-    <p>Cloudflare Web Analytics は Cookie を使用しません。Microsoft Clarity は Cookie 等を用います。</p>
-    <p>ブラウザの Cookie 設定から、Cookie の受け入れを制限することができます。</p>
-    <p>Cookie の名称および保存期間：<span class="confirm">【要確認】</span></p>
-
-    <h2>安全管理</h2>
-    <p>当社は、取得した情報の漏えい、滅失または毀損の防止その他の安全管理のため、必要かつ適切な措置を講じます。</p>
-    <p>具体的な安全管理措置の内容：<span class="confirm">【要確認】</span></p>
+    <p>Cloudflare Web Analytics は Cookie を使用しません。</p>
+    <p>Microsoft Clarity は Cookie を使用します。ブラウザで Cookie を無効にしている場合、Clarity は Cookie を設定しません。ブラウザの Cookie 設定から、Cookie の受け入れを制限することもできます。</p>
+    <p>Microsoft の文書に記載されている Clarity の Cookie は次のとおりです。</p>
+    <div class="table-scroll">
+    <table class="cookie-table">
+        <thead>
+            <tr>
+                <th scope="col">名称</th>
+                <th scope="col">種類</th>
+                <th scope="col">目的</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>_clck</td>
+                <td>ファーストパーティ</td>
+                <td>そのサイトに固有の Clarity ユーザー ID と設定を保持し、同じユーザー ID に紐づけます。</td>
+            </tr>
+            <tr>
+                <td>_clsk</td>
+                <td>ファーストパーティ</td>
+                <td>複数のページ閲覧を、一つの Clarity セッション記録につなぎます。</td>
+            </tr>
+            <tr>
+                <td>CLID</td>
+                <td>サードパーティ</td>
+                <td>Clarity が、Clarity を利用するいずれかのサイトでこのユーザーを初めて認識したことを識別します。</td>
+            </tr>
+            <tr>
+                <td>ANONCHK</td>
+                <td>サードパーティ</td>
+                <td>MUID を、広告に用いられる Cookie である ANID に転送するかどうかを示します。Clarity は ANID を使用しないため、この値は常に 0 です。</td>
+            </tr>
+            <tr>
+                <td>MR</td>
+                <td>サードパーティ</td>
+                <td>MUID を更新するかどうかを示します。</td>
+            </tr>
+            <tr>
+                <td>MUID</td>
+                <td>サードパーティ</td>
+                <td>Microsoft のサイトを訪れるウェブブラウザを識別します。広告、サイト分析、その他の運用に用いられます。</td>
+            </tr>
+            <tr>
+                <td>SM</td>
+                <td>サードパーティ</td>
+                <td>Microsoft のドメイン間で MUID を同期するために用いられます。</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <p>出典：<a href="https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-cookies" target="_blank" rel="noopener noreferrer">https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-cookies</a></p>
 
     <h2>開示等の請求</h2>
     <p>本人は、個人情報保護法に基づき、当社の保有個人データについて、開示、訂正、追加、削除、利用の停止、消去、第三者への提供の停止を請求することができます。</p>
-    <p>請求の手続、本人確認の方法、および手数料：<span class="confirm">【要確認】</span></p>
-    <p>請求先は、次の「お問い合わせ窓口」です。</p>
+    <p>請求は、お問い合わせ窓口のメールアドレス宛にご連絡ください。手数料はいただきません。本人確認をお願いする場合があります。</p>
 
     <h2>お問い合わせ窓口</h2>
     <dl>
         <dt>名称</dt>
         <dd>ニューライフ開発株式会社</dd>
         <dt>所在地</dt>
-        <dd>〒541-0057 大阪府大阪市中央区北久宝寺町3-6-1 本町南ガーデンシティ7階<span class="confirm">【要確認】</span></dd>
+        <dd>〒541-0057 大阪府大阪市中央区北久宝寺町3-6-1 本町南ガーデンシティ7階</dd>
         <dt>メール</dt>
-        <dd>info@newlife-dev-group.com<span class="confirm">【要確認】</span></dd>
-        <dt>電話</dt>
-        <dd><span class="confirm">【要確認】</span></dd>
-        <dt>担当者</dt>
-        <dd><span class="confirm">【要確認】</span></dd>
+        <dd>info@newlife-dev-group.com</dd>
     </dl>
 
     <h2>改定</h2>
-    <p>制定日：<span class="confirm">【要確認】</span></p>
-    <p>本ポリシーを変更する場合は、変更後の内容を本ページに掲載します。改定日：<span class="confirm">【要確認】</span></p>
+    <p>制定日：2026年10月21日</p>
+    <p>本ポリシーを変更する場合は、変更後の内容を本ページに掲載します。</p>
 </main>
 
 <footer id="contact">
