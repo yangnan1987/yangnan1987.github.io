@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<title>OAuth Callback | Japan Home Note</title>
+<style>body{font-family:sans-serif;max-width:640px;margin:40px auto;padding:0 16px}code{display:block;word-break:break-all;background:#f3f3f3;padding:12px;margin:8px 0}</style>
+</head><body>
+<h1>Japan Home Note - OAuth Callback</h1>
+<p id="msg">認可コードを下に表示します。コピーしてツールに貼り付けてください。/ 请复制下方授权码粘贴到工具中。</p>
+<code id="code">-</code>
+<button id="copy">Copy</button>
+<p>state: <span id="state">-</span></p>
+<p>このページは外部送信・トラッキングを行いません。</p>
+<script>
+var q=new URLSearchParams(location.search);
+var c=(q.get('code')||'').replace(/#_$/,'');
+var e=q.get('error_description')||q.get('error');
+document.getElementById('code').textContent=c||(e?('ERROR: '+e):'(no code)');
+document.getElementById('state').textContent=q.get('state')||'-';
+document.getElementById('copy').onclick=function(){navigator.clipboard.writeText(c)};
+</script>
+</body></html>
