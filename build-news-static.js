@@ -440,7 +440,9 @@ injectBetweenMarkers(
   fullListHtml
 );
 
-const homeListHtml = buildCrawlNewsList(data, 5);
+// 首页只显示最新几条（与 index.html 的 slice 数保持一致），其余看 news.html。
+const HOME_NEWS_LIMIT = 4;
+const homeListHtml = buildCrawlNewsList(data, HOME_NEWS_LIMIT);
 injectBetweenMarkers(
   path.join(ROOT, 'index.html'),
   '<!-- BUILD:HOME_NEWS_START -->',
