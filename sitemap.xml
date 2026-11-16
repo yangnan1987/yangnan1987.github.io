@@ -55,6 +55,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://newlife-dev-group.com/news/n_20261116_1.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://newlife-dev-group.com/news/n_20261109_2.html</loc>
     <lastmod>2026-11-09</lastmod>
     <changefreq>monthly</changefreq>

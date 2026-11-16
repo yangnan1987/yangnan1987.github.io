@@ -1,5 +1,13 @@
 [
   {
+    "id": "n_20261116_1",
+    "type": "event",
+    "date": "2026.11.16",
+    "tag": "ニュース",
+    "title": "【ニュース】特別注視区域が地図で確認可能に——不動産情報ライブラリ",
+    "content": "<div class=\"article-lead\" style=\"font-weight: bold; color: #555; margin-bottom: 30px; padding: 15px; background: #f9f9f9; border-left: 5px solid #1a2a3a;\">国土交通省は令和8年（2026年）11月9日、「不動産情報ライブラリ」のコンテンツ追加・データ更新を10月28日に実施したと発表しました。重要土地等調査法に基づき、200㎡以上の土地・建物の取引をする場合に事前届出が必要な区域として国が指定する「特別注視区域」の区域界（外縁線）が、新たに掲載され、地図上で確認できます。</div>\n<h3>1. 特別注視区域の区域界</h3>\n<p>「特別注視区域」は、重要土地等調査法に基づき、200㎡以上の土地・建物の取引をする場合に事前届出が必要な区域として、国が指定するものです。今回、その区域界（外縁線）が不動産情報ライブラリに新たに掲載されました。</p>\n<h3>2. 地図での表示とAPI</h3>\n<p>区域界は、Webの地図上で誰でも表示できます。地価公示、都市計画、防災情報（ハザードマップ）など、多様なデータと重ね合わせて利用できます。APIでの提供も始まり、官民のシステム・サービスへの組込みやデータ連携が容易になります。</p>\n<h3>3. あわせて更新されたデータ</h3>\n<p>あわせて、不動産取引価格情報・成約価格情報に2026年第2四半期のデータが追加されました。指定緊急避難場所、駅別乗降客数、駅情報のデータも更新されています。</p>\n<h3>4. 不動産情報ライブラリ</h3>\n<p>不動産情報ライブラリは、国土交通省が運営するサービスで、2024年4月に開始しました。不動産取得の「国籍等」把握については、<a href=\"n_20260831_1.html\" style=\"color:#1a6b8a; text-decoration:underline;\">本サイト2026年8月31日のニュース</a>をご覧ください。</p>\n<hr style=\"margin: 40px 0; border: 0; border-top: 1px solid #eee;\">\n<p style=\"color:#666; font-size: 0.95em;\"><strong>出典・参照（2026年11月16日時点）</strong><br>・国土交通省 報道発表（2026年11月9日）<br><a href=\"https://www.mlit.go.jp/report/press/tochi_fudousan_kensetsugyo17_hh_000001_00091.html\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color:#1a6b8a; text-decoration:underline;\">https://www.mlit.go.jp/report/press/tochi_fudousan_kensetsugyo17_hh_000001_00091.html</a><br>・内閣府 重要土地等調査法 区域指定<br><a href=\"https://www.cao.go.jp/tochi-chosa/kuiki.html\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color:#1a6b8a; text-decoration:underline;\">https://www.cao.go.jp/tochi-chosa/kuiki.html</a><br>・不動産情報ライブラリ<br><a href=\"https://www.reinfolib.mlit.go.jp\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color:#1a6b8a; text-decoration:underline;\">https://www.reinfolib.mlit.go.jp</a><br>※本稿は一般的な整理であり、法的助言ではありません。対象かどうかは取引前に地図で確認し、詳細は内閣府の案内や専門家にご確認ください。</p>"
+  },
+  {
     "id": "n_20261109_2",
     "type": "event",
     "date": "2026.11.9",
